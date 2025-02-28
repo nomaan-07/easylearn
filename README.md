@@ -7,7 +7,7 @@
 
 ## Introduction 🙋‍♂️
 
-Hello! I'm Nomaan, a passionate web developer based in Iran. This project, **Easy Learn**, is a culmination of my skills in HTML, CSS, JavaScript, and TailwindCSS. It's designed to be a comprehensive learning platform where users can explore various topics, engage with the community, and even purchase simulated courses.
+This project, **Easy Learn**, is a culmination of my skills in HTML, CSS, JavaScript, and TailwindCSS. It's designed to be a comprehensive learning platform where users can explore various topics, engage with the community, and even purchase simulated courses.
 
 [![Visitors](https://api.visitorbadge.io/api/visitors?path=https%3A%2F%2Fgithub.com%2Fnomaan-07%2FeasyLearn&labelColor=%230f172a&countColor=%23059669)](https://visitorbadge.io/status?path=https%3A%2F%2Fgithub.com%2Fnomaan-07%2FeasyLearn)
 
@@ -68,7 +68,7 @@ Hello! I'm Nomaan, a passionate web developer based in Iran. This project, **Eas
 
 ## Live Demos 🌐
 
-[easyLearn (github)](https://nomaan-07.github.io/easyLearn)
+[easylearn (github)](https://nomaan-07.github.io/easylearn)
 
 ## Database 🗄️
 
