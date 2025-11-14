@@ -1,78 +1,77 @@
 import {
+  currentPasswordInputElem,
+  emailInput,
+  lastBlogsWrapperElement,
+  latestCoursesWrapperElement,
+  localStorageUserID,
+  localStorageUsername,
+  newPasswordInputElem,
+  newQuestionTextareaElement,
+  newTicketChosenDepartmentElement,
+  newTicketSubmitBtn,
+  passwordInput,
+  popularCoursesWrapperElement,
+  recentBlogsWrapper,
+  subjectInputElement,
+  ticketBtn,
+  ticketTextareaElement,
+  usernameInput,
+} from "../dom/dom-elements.js";
+import {
+  addAccountCourseToDOM,
+  addAdminPanelQuestionToDOM,
+  addAdminPanelViewedQuestionToDOM,
+  addAdminViewedUserCoursesToDOM,
+  addAdminViewedUserStatsToDOM,
+  addAllUsersToDOM,
+  addBlogCardsToDOM,
+  addCommentsOfPageToDom,
+  addCourseCardsToDOM,
+  addCourseToCartHandler,
+  addRecentBlogsToDom,
+  addSellAndExpenseDataToDOM,
+  addSessionQuestionsToDOM,
+  addSessionToDOM,
+  addTicketsToDOM,
+  addUserAccountDetailToDOM,
+  addUserAccountQuestionToDOM,
+  addViewedTicketToDOM,
+  returnFromViewedUser,
+  toggleNewTicketWrapper,
+  updateCartPageDetail,
+  updateHederCartDetail,
+} from "../dom/dom-handlers.js";
+import {
   confirmSweetAlert,
   sweetAlert,
 } from "../initializers/sweet-alert-initialize.js";
 import { toggleTextarea } from "../ui/ui-handlers.js";
 import {
-  getAllFromDatabase,
-  getOneFromDatabase,
-  updateInDatabase,
-  addToDatabase,
-  getSomeFromDatabase,
-  deleteFromDatabase,
-} from "./database-api.js";
-import {
-  signupFormValidation,
-  loginFormValidation,
-  accountChangeDetailFormValidation,
-  accountChangePasswordFormValidation,
-  newTicketValidation,
-} from "../validation/validation.js";
-import {
-  persianMonths,
-  generateRandomID,
-  sortArray,
-  getLocalCourses,
   applyDiscountToPrice,
   convertPersianNumbersToEnglish,
-  getQueryParameters,
   createCourseObject,
+  generateRandomID,
+  getLocalCourses,
+  getQueryParameters,
+  persianMonths,
   removeLoader,
+  sortArray,
 } from "../utils/utils.js";
 import {
-  latestCoursesWrapperElement,
-  popularCoursesWrapperElement,
-  lastBlogsWrapperElement,
-  recentBlogsWrapper,
-  usernameInput,
-  emailInput,
-  passwordInput,
-  localStorageUserID,
-  currentPasswordInputElem,
-  newPasswordInputElem,
-  newQuestionTextareaElement,
-  newTicketSubmitBtn,
-  newTicketChosenDepartmentElement,
-  subjectInputElement,
-  ticketTextareaElement,
-  ticketBtn,
-  localStorageUsername,
-} from "../dom/dom-elements.js";
+  accountChangeDetailFormValidation,
+  accountChangePasswordFormValidation,
+  loginFormValidation,
+  newTicketValidation,
+  signupFormValidation,
+} from "../validation/validation.js";
 import {
-  insertToDOM,
-  addCourseCardsToDOM,
-  addBlogCardsToDOM,
-  addRecentBlogsToDom,
-  addCourseToCartHandler,
-  addAccountCourseToDOM,
-  addUserAccountDetailToDOM,
-  addSellAndExpenseDataToDOM,
-  updateCartPageDetail,
-  updateHederCartDetail,
-  addSessionToDOM,
-  addSessionQuestionsToDOM,
-  addAdminPanelQuestionToDOM,
-  addAdminPanelViewedQuestionToDOM,
-  addUserAccountQuestionToDOM,
-  toggleNewTicketWrapper,
-  addTicketsToDOM,
-  addViewedTicketToDOM,
-  addAllUsersToDOM,
-  returnFromViewedUser,
-  addAdminViewedUserCoursesToDOM,
-  addAdminViewedUserStatsToDOM,
-  addCommentsOfPageToDom,
-} from "../dom/dom-handlers.js";
+  addToDatabase,
+  deleteFromDatabase,
+  getAllFromDatabase,
+  getOneFromDatabase,
+  getSomeFromDatabase,
+  updateInDatabase,
+} from "./database-api.js";
 
 // index.js
 const fetchAndDisplayMainPageCourses = async () => {
@@ -428,7 +427,11 @@ const fetchAndDisplaySessionQuestions = async () => {
   )}_${localStorageUserID}`;
   const questionID = getQueryParameters("question");
 
-  const response = await getOneFromDatabase("question_answer", "id", pageID);
+  const response = await getOneFromDatabase(
+    "easyLearn-questions",
+    "id",
+    pageID
+  );
 
   if (!response) {
     addSessionQuestionsToDOM();
@@ -452,7 +455,7 @@ const submitSessionNewQuestion = async (
       sweetAlert("سوال نمی‌تواند خالی باشد.", "info");
       return;
     }
-    const tableName = "question_answer";
+    const tableName = "easyLearn-questions";
 
     const newQuestion = {
       id: generateRandomID(),
@@ -461,7 +464,7 @@ const submitSessionNewQuestion = async (
       is_answered: false,
       is_closed: false,
       answers: [],
-      writer_name: localStorageUsername,
+      username: localStorageUsername,
     };
 
     newQuestionTextareaElement.value = "";
@@ -537,7 +540,7 @@ const fetchAndDisplayAccountCourses = async () => {
 const fetchAndDisplayAccountQuestions = async () => {
   try {
     const data = await getSomeFromDatabase(
-      "question_answer",
+      "easyLearn-questions",
       "user_id",
       localStorageUserID
     );
@@ -560,7 +563,7 @@ const submitNewTicket = async (tickets) => {
       created_at: new Date(),
       updated_at: new Date(),
       user_id: localStorageUserID,
-      writer_name: localStorageUsername,
+      username: localStorageUsername,
       department,
       subject,
       content,
@@ -623,7 +626,7 @@ const submitTicketAnswer = (btn, ticket, tickets, isUserPanel) => {
       created_at: new Date(),
       content,
       writer_role: isUserPanel ? "user" : "admin",
-      writer_name: isUserPanel
+      username: isUserPanel
         ? localStorageUsername
         : localStorage.getItem("admin-name"),
     };
@@ -743,7 +746,7 @@ const submitAccountPasswordChanges = async (event) => {
 // admin-panel.js
 const fetchAndDisplayAdminQuestions = async () => {
   try {
-    const data = await getAllFromDatabase("question_answer");
+    const data = await getAllFromDatabase("easyLearn-questions");
     addAdminPanelQuestionToDOM(data);
   } catch (error) {
     console.error("Failed to fetch questions", error);
@@ -762,7 +765,7 @@ const closeQuestion = (btn, pageID, questions, adminName, data, page) => {
       const questionID = btn.dataset.question_id;
       const question = questions.find((question) => question.id === questionID);
       question.is_closed = true;
-      await updateInDatabase("question_answer", { questions }, pageID);
+      await updateInDatabase("easyLearn-questions", { questions }, pageID);
       addAdminPanelViewedQuestionToDOM(data, page, question, adminName);
     });
   } catch (error) {
@@ -849,7 +852,7 @@ const submitQuestionAnswer = (
       created_at: new Date(),
       content,
       writer_role: adminName ? "teacher" : "user",
-      writer_name: adminName ? adminName : localStorageUsername,
+      username: adminName ? adminName : localStorageUsername,
     };
 
     answers.push(newAnswer);
@@ -857,7 +860,7 @@ const submitQuestionAnswer = (
 
     textarea.value = "";
 
-    await updateInDatabase("question_answer", { questions }, pageID);
+    await updateInDatabase("easyLearn-questions", { questions }, pageID);
     sweetAlert("پاسخ شما با موفقیت ارسال شد.", "success");
 
     adminName
@@ -986,34 +989,34 @@ const deleteUserCourse = async (deleteUserCourseBtn, user, users) => {
 };
 
 export {
-  fetchAndDisplayMainPageCourses,
-  fetchAndDisplayMainPageBlogs,
-  submitCommentReply,
-  submitNewComment,
-  fetchAndDisplayComments,
-  fetchAndDisplayRecantBlogs,
-  submitSignupForm,
-  submitLoginForm,
-  purchaseCourses,
-  fetchAndDisplaySession,
-  fetchAndDisplaySessionQuestions,
-  submitSessionNewQuestion,
-  submitQuestionAnswer,
-  fetchAndDisplayAccountCourses,
-  fetchAndDisplayAccountQuestions,
-  submitNewTicket,
-  fetchAndDisplayUserTickets,
-  submitTicketAnswer,
-  fetchAndDisplayAccountUserDetail,
-  submitAccountDetailChanges,
-  submitAccountPasswordChanges,
-  fetchAndDisplayAdminQuestions,
-  closeQuestion,
-  fetchAndDisplayAllTickets,
-  closeTicket,
-  fetchAndDisplayAllUsers,
-  fetchAndDisplaySellAndExpenseData,
   changeUserRole,
+  closeQuestion,
+  closeTicket,
   deleteUser,
   deleteUserCourse,
+  fetchAndDisplayAccountCourses,
+  fetchAndDisplayAccountQuestions,
+  fetchAndDisplayAccountUserDetail,
+  fetchAndDisplayAdminQuestions,
+  fetchAndDisplayAllTickets,
+  fetchAndDisplayAllUsers,
+  fetchAndDisplayComments,
+  fetchAndDisplayMainPageBlogs,
+  fetchAndDisplayMainPageCourses,
+  fetchAndDisplayRecantBlogs,
+  fetchAndDisplaySellAndExpenseData,
+  fetchAndDisplaySession,
+  fetchAndDisplaySessionQuestions,
+  fetchAndDisplayUserTickets,
+  purchaseCourses,
+  submitAccountDetailChanges,
+  submitAccountPasswordChanges,
+  submitCommentReply,
+  submitLoginForm,
+  submitNewComment,
+  submitNewTicket,
+  submitQuestionAnswer,
+  submitSessionNewQuestion,
+  submitSignupForm,
+  submitTicketAnswer,
 };
