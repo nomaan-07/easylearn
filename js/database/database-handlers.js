@@ -372,8 +372,7 @@ const purchaseCourses = async () => {
     );
 
     for (let course of filteredCourses) {
-      let courseStudentsID = course.students_id || "[]";
-      courseStudentsID = JSON.parse(courseStudentsID);
+      const courseStudentsID = course.students_id || [];
 
       courseStudentCount = course.students;
       courseStudentsID.push(localStorageUserID);
@@ -522,13 +521,9 @@ const fetchAndDisplayAccountCourses = async () => {
   const dbCourses = await getAllFromDatabase("courses");
 
   let filteredCourses = dbCourses.filter((course) => {
-    let studentsIDs = course.students_id;
+    const studentsIDs = course.students_id;
 
     if (!studentsIDs) return;
-
-    if (typeof studentsIDs === "string") {
-      studentsIDs = JSON.parse(studentsIDs);
-    }
 
     return studentsIDs.some((id) => id === localStorageUserID);
   });
@@ -943,6 +938,7 @@ const deleteUserCourse = async (deleteUserCourseBtn, user, users) => {
     const filteredCourses = user.courses.filter(
       (course) => course.id !== deletedCourseID
     );
+
     const filteredStudentsID = deletedCourse.students_id.filter(
       (id) => id !== user.id
     );

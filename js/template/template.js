@@ -1677,16 +1677,17 @@ const adminPanelUserCoursesTemplate = (user) => {
   if (!user.courses.length) {
     coursesTemplate = `<p class="sm:text-lg text-center font-VazirMedium text-rose-600 p-5 bg-white dark:bg-slate-800 shadow dark:shadow-none dark:border dark:border-slate-800 rounded-2xl">کاربر در هیچ دوره ای شرکت نکرده است.</p>`;
   } else {
-    user.courses.forEach((course) => {
-      coursesTemplate += `                
+    user.courses.forEach(
+      (course) =>
+        (coursesTemplate += `                
             <!-- Course -->
             <div class="bg-white dark:bg-slate-800 rounded-2xl pb-5 relative">
               <!-- Course Type -->
               <span class="absolute top-3 right-0 px-2 py-px text-sm ${
                 course.is_free ? "bg-emerald-600" : "bg-rose-600"
               } text-white rounded-l-full">${
-        course.is_free ? "رایگان" : "نقدی"
-      }</span>
+          course.is_free ? "رایگان" : "نقدی"
+        }</span>
               <!-- End of Course Type -->
               <!-- Course Banner -->
               <a class="block h-40 rounded-2xl overflow-hidden border-b border-b-slate-200 dark:border-b-slate-700" href="./course.html?course=${
@@ -1713,8 +1714,8 @@ const adminPanelUserCoursesTemplate = (user) => {
               </div>
               <!-- End of User Delete Course Btn -->
             </div>
-            <!-- End of Course -->`;
-    });
+            <!-- End of Course -->`)
+    );
   }
 
   let template = `
