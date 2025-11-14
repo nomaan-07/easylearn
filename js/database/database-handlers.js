@@ -616,6 +616,7 @@ const submitTicketAnswer = (btn, ticket, tickets, isUserPanel) => {
 
     const answers = ticket.answers;
 
+    console.log(ticket.answers);
     const newAnswer = {
       id: answers.length + 1,
       created_at: new Date(),
