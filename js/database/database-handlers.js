@@ -518,11 +518,18 @@ const submitSessionNewQuestion = async (
 const fetchAndDisplayAccountCourses = async () => {
   const dbCourses = await getAllFromDatabase("courses");
 
-  let filteredCourses = dbCourses.filter(
-    (course) =>
-      course.students_id &&
-      course.students_id.some((id) => id === localStorageUserID)
-  );
+  let filteredCourses = dbCourses.filter((course) => {
+    let studentsIDs = course.students_id;
+
+    if (!studentsIDs) return;
+
+    if (typeof studentsIDs === "string") {
+      studentsIDs = JSON.parse(studentsIDs);
+    }
+
+    return studentsIDs.some((id) => id === localStorageUserID);
+  });
+
   addAccountCourseToDOM(filteredCourses);
 };
 
