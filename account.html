@@ -4,87 +4,248 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>پنل کاربری | ایزی‌لرن</title>
-    <link id="favicon" rel="icon" href="./images/favIcons/fuchsia-favicon-64x64.png" />
+    <link
+      id="favicon"
+      rel="icon"
+      href="./images/favIcons/fuchsia-favicon-64x64.png"
+    />
     <link rel="stylesheet" href="./vendor/Sweetalert2/sweetalert2.min.css" />
     <link rel="stylesheet" href="./vendor/animate/animate.min.css" />
     <link rel="stylesheet" href="./styles/app.css" />
   </head>
 
-  <body class="text-slate-900 dark:text-white bg-slate-100 dark:bg-slate-900 font-Vazir overflow-x-hidden h-0 overflow-y-hidden relative md:min-h-[101vh]">
+  <body
+    class="text-slate-900 dark:text-white bg-slate-100 dark:bg-slate-900 font-Vazir overflow-x-hidden h-0 overflow-y-hidden relative md:min-h-[101vh]"
+  >
     <svg class="hidden">
-      <symbol id="arrow-left" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18"></path>
+      <symbol
+        id="arrow-left"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="currentColor"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18"
+        ></path>
       </symbol>
-      <symbol id="arrow-path" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 13.803-3.7M4.031 9.865a8.25 8.25 0 0 1 13.803-3.7l3.181 3.182m0-4.991v4.99" />
+      <symbol
+        id="arrow-path"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="currentColor"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 13.803-3.7M4.031 9.865a8.25 8.25 0 0 1 13.803-3.7l3.181 3.182m0-4.991v4.99"
+        />
       </symbol>
-      <symbol id="arrow-right-start-on-rectangle" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0 0 13.5 3h-6a2.25 2.25 0 0 0-2.25 2.25v13.5A2.25 2.25 0 0 0 7.5 21h6a2.25 2.25 0 0 0 2.25-2.25V15m3 0 3-3m0 0-3-3m3 3H9" />
+      <symbol
+        id="arrow-right-start-on-rectangle"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="currentColor"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M15.75 9V5.25A2.25 2.25 0 0 0 13.5 3h-6a2.25 2.25 0 0 0-2.25 2.25v13.5A2.25 2.25 0 0 0 7.5 21h6a2.25 2.25 0 0 0 2.25-2.25V15m3 0 3-3m0 0-3-3m3 3H9"
+        />
       </symbol>
-      <symbol id="bars-3" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"></path>
+      <symbol
+        id="bars-3"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="currentColor"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+        ></path>
       </symbol>
-      <symbol id="building-library" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M12 21v-8.25M15.75 21v-8.25M8.25 21v-8.25M3 9l9-6 9 6m-1.5 12V10.332A48.36 48.36 0 0 0 12 9.75c-2.551 0-5.056.2-7.5.582V21M3 21h18M12 6.75h.008v.008H12V6.75Z" />
+      <symbol
+        id="building-library"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="currentColor"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M12 21v-8.25M15.75 21v-8.25M8.25 21v-8.25M3 9l9-6 9 6m-1.5 12V10.332A48.36 48.36 0 0 0 12 9.75c-2.551 0-5.056.2-7.5.582V21M3 21h18M12 6.75h.008v.008H12V6.75Z"
+        />
       </symbol>
-      <symbol id="chat-bubble-left-right" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+      <symbol
+        id="chat-bubble-left-right"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="currentColor"
+      >
         <path
           stroke-linecap="round"
           stroke-linejoin="round"
           d="M20.25 8.511c.884.284 1.5 1.128 1.5 2.097v4.286c0 1.136-.847 2.1-1.98 2.193-.34.027-.68.052-1.02.072v3.091l-3-3c-1.354 0-2.694-.055-4.02-.163a2.115 2.115 0 0 1-.825-.242m9.345-8.334a2.126 2.126 0 0 0-.476-.095 48.64 48.64 0 0 0-8.048 0c-1.131.094-1.976 1.057-1.976 2.192v4.286c0 .837.46 1.58 1.155 1.951m9.345-8.334V6.637c0-1.621-1.152-3.026-2.76-3.235A48.455 48.455 0 0 0 11.25 3c-2.115 0-4.198.137-6.24.402-1.608.209-2.76 1.614-2.76 3.235v6.226c0 1.621 1.152 3.026 2.76 3.235.577.075 1.157.14 1.74.194V21l4.155-4.155"
         ></path>
       </symbol>
-      <symbol id="chat-bubble-left-ellipsis" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+      <symbol
+        id="chat-bubble-left-ellipsis"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="currentColor"
+      >
         <path
           stroke-linecap="round"
           stroke-linejoin="round"
           d="M8.625 9.75a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375m-13.5 3.01c0 1.6 1.123 2.994 2.707 3.227 1.087.16 2.185.283 3.293.369V21l4.184-4.183a1.14 1.14 0 0 1 .778-.332 48.294 48.294 0 0 0 5.83-.498c1.585-.233 2.708-1.626 2.708-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0 0 12 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018Z"
         ></path>
       </symbol>
-      <symbol id="check-badge" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+      <symbol
+        id="check-badge"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="currentColor"
+      >
         <path
           stroke-linecap="round"
           stroke-linejoin="round"
           d="M9 12.75 11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 0 1-1.043 3.296 3.745 3.745 0 0 1-3.296 1.043A3.745 3.745 0 0 1 12 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 0 1-3.296-1.043 3.745 3.745 0 0 1-1.043-3.296A3.745 3.745 0 0 1 3 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 0 1 1.043-3.296 3.746 3.746 0 0 1 3.296-1.043A3.746 3.746 0 0 1 12 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 0 1 3.296 1.043 3.746 3.746 0 0 1 1.043 3.296A3.745 3.745 0 0 1 21 12Z"
         ></path>
       </symbol>
-      <symbol id="check" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"></path>
+      <symbol
+        id="check"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="currentColor"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="m4.5 12.75 6 6 9-13.5"
+        ></path>
       </symbol>
-      <symbol id="chevron-down" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+      <symbol
+        id="chevron-down"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="currentColor"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="m19.5 8.25-7.5 7.5-7.5-7.5"
+        />
       </symbol>
-      <symbol id="course" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 48 48">
+      <symbol
+        id="course"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="currentColor"
+        viewBox="0 0 48 48"
+      >
         <g data-name="38. book on monitor/computer">
           <path
             d="M44,5H36V1a1,1,0,0,0-1-1H15a3,3,0,0,0-3,3V5H4A3,3,0,0,0,1,8V37a3,3,0,0,0,3,3H21l-.67,2H18a2,2,0,0,0-2,2v3a1,1,0,0,0,1,1H31a1,1,0,0,0,1-1V44a2,2,0,0,0-2-2H27.72l-.67-2H44a3,3,0,0,0,3-3V8A3,3,0,0,0,44,5ZM34,26v2H15a1,1,0,0,1,0-2Zm0-2H18V2H34ZM14,3a1,1,0,0,1,1-1h1V24a5.18,5.18,0,0,0-2,.18ZM3,8A1,1,0,0,1,4,7h8V27a3,3,0,0,0,3,3H35a1,1,0,0,0,1-1V7h8a1,1,0,0,1,1,1V32H3ZM30,46H18V44H30Zm-4.39-4H22.39l.66-2H25ZM45,37a1,1,0,0,1-1,1H4a1,1,0,0,1-1-1V34H45Z"
           ></path>
-          <path d="M23.29 36.71a1 1 0 1 0 0-1.42A1 1 0 0 0 23.29 36.71zM22 17h8a1 1 0 0 0 0-2H22A1 1 0 0 0 22 17zM28 19H24a1 1 0 0 0 0 2h4A1 1 0 0 0 28 19zM22 11h8a1 1 0 0 0 1-1V6a1 1 0 0 0-1-1H22a1 1 0 0 0-1 1v4A1 1 0 0 0 22 11zm1-4h6V9H23z"></path>
+          <path
+            d="M23.29 36.71a1 1 0 1 0 0-1.42A1 1 0 0 0 23.29 36.71zM22 17h8a1 1 0 0 0 0-2H22A1 1 0 0 0 22 17zM28 19H24a1 1 0 0 0 0 2h4A1 1 0 0 0 28 19zM22 11h8a1 1 0 0 0 1-1V6a1 1 0 0 0-1-1H22a1 1 0 0 0-1 1v4A1 1 0 0 0 22 11zm1-4h6V9H23z"
+          ></path>
         </g>
       </symbol>
-      <symbol id="eye-slash" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+      <symbol
+        id="eye-slash"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="currentColor"
+      >
         <path
           stroke-linecap="round"
           stroke-linejoin="round"
           d="M3.98 8.223A10.477 10.477 0 0 0 1.934 12C3.226 16.338 7.244 19.5 12 19.5c.993 0 1.953-.138 2.863-.395M6.228 6.228A10.451 10.451 0 0 1 12 4.5c4.756 0 8.773 3.162 10.065 7.498a10.522 10.522 0 0 1-4.293 5.774M6.228 6.228 3 3m3.228 3.228 3.65 3.65m7.894 7.894L21 21m-3.228-3.228-3.65-3.65m0 0a3 3 0 1 0-4.243-4.243m4.242 4.242L9.88 9.88"
         />
       </symbol>
-      <symbol id="currency-dollar" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+      <symbol
+        id="currency-dollar"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="currentColor"
+      >
         <path
           stroke-linecap="round"
           stroke-linejoin="round"
           d="M12 6v12m-3-2.818.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
         />
       </symbol>
-      <symbol id="eye" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z" />
-        <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+      <symbol
+        id="eye"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="currentColor"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z"
+        />
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
+        />
       </symbol>
-      <symbol id="information-circle" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" d="m11.25 11.25.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9-3.75h.008v.008H12V8.25Z"></path>
+      <symbol
+        id="information-circle"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="currentColor"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="m11.25 11.25.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9-3.75h.008v.008H12V8.25Z"
+        ></path>
       </symbol>
-      <symbol id="logo" xmlns="http://www.w3.org/2000/svg" version="1.0" viewBox="0 0 465.000000 299.000000" preserveAspectRatio="xMidYMid meet">
-        <g transform="translate(0.000000,299.000000) scale(0.100000,-0.100000)" fill="currentColor" stroke="none">
+      <symbol
+        id="logo"
+        xmlns="http://www.w3.org/2000/svg"
+        version="1.0"
+        viewBox="0 0 465.000000 299.000000"
+        preserveAspectRatio="xMidYMid meet"
+      >
+        <g
+          transform="translate(0.000000,299.000000) scale(0.100000,-0.100000)"
+          fill="currentColor"
+          stroke="none"
+        >
           <path
             d="M2673 2951 c-114 -54 -199 -156 -288 -343 -88 -186 -113 -360 -68 -461 30 -64 115 -152 177 -181 129 -61 96 -59 996 -66 590 -5 840 -11 879 -19 138 -31 259 -132 262 -218 1 -27 1 -26 11 7 15 50 3 273 -17 340 -43 140 -125 237 -247 295 -148 71 -103 67 -953 75 -443 4 -785 12 -805 17 -91 25 -103 57 -42 115 99 97 219 109 428 42 105 -33 111 -32 124 18 33 121 -71 317 -202 382 -76 38 -171 37 -255 -3z"
           ></path>
@@ -94,61 +255,162 @@
           <path
             d="M678 2308 c-51 -101 -96 -189 -101 -198 -5 -11 13 -36 66 -91 109 -112 170 -202 169 -247 -2 -41 -29 -75 -84 -103 -125 -64 -497 -75 -655 -19 -32 11 -59 20 -60 20 -2 0 -2 -113 -1 -252 l3 -252 44 -13 c125 -36 380 -35 526 2 101 26 204 82 267 146 203 207 234 648 70 1001 -42 89 -113 188 -137 188 -8 0 -52 -75 -107 -182z"
           ></path>
-          <path d="M294 1991 c-151 -69 -127 -292 34 -320 94 -17 178 34 201 123 22 90 -28 181 -114 205 -54 15 -73 14 -121 -8z"></path>
-          <path d="M4016 1631 l-198 -198 11 -69 c6 -38 29 -184 51 -324 87 -542 118 -669 171 -685 65 -21 143 165 184 437 25 167 16 862 -13 1006 l-7 32 -199 -199z"></path>
-          <path d="M2517 1717 c-79 -20 -138 -111 -123 -190 16 -84 84 -140 172 -140 98 0 164 68 164 168 0 113 -102 191 -213 162z"></path>
+          <path
+            d="M294 1991 c-151 -69 -127 -292 34 -320 94 -17 178 34 201 123 22 90 -28 181 -114 205 -54 15 -73 14 -121 -8z"
+          ></path>
+          <path
+            d="M4016 1631 l-198 -198 11 -69 c6 -38 29 -184 51 -324 87 -542 118 -669 171 -685 65 -21 143 165 184 437 25 167 16 862 -13 1006 l-7 32 -199 -199z"
+          ></path>
+          <path
+            d="M2517 1717 c-79 -20 -138 -111 -123 -190 16 -84 84 -140 172 -140 98 0 164 68 164 168 0 113 -102 191 -213 162z"
+          ></path>
           <path
             d="M3380 1348 c-62 -90 -115 -171 -118 -181 -3 -12 26 -49 97 -122 80 -84 101 -111 101 -134 0 -17 -6 -31 -16 -35 -9 -3 -150 -6 -315 -6 -231 0 -300 3 -303 13 -2 6 -11 44 -20 82 -25 107 -76 203 -157 289 -39 42 -78 76 -85 76 -9 0 -51 -74 -108 -192 l-93 -193 109 -112 c118 -122 153 -178 137 -222 -21 -54 -138 -157 -314 -276 -55 -38 -100 -72 -100 -76 0 -10 375 -249 391 -249 32 0 127 138 174 254 l37 91 62 3 c54 3 61 5 61 23 0 41 44 100 93 126 37 19 117 19 154 -1 42 -21 81 -70 89 -111 7 -37 31 -48 40 -17 3 9 14 35 25 58 39 80 155 112 235 65 35 -21 37 -21 50 -4 56 75 84 190 91 383 6 181 -7 280 -56 406 -30 78 -115 214 -137 221 -7 2 -62 -69 -124 -159z"
           ></path>
-          <path d="M3017 432 c-79 -54 -86 -157 -16 -217 37 -31 68 -39 114 -31 104 20 143 153 66 229 -39 39 -120 49 -164 19z"></path>
-          <path d="M3394 431 c-85 -52 -80 -177 9 -231 86 -53 197 13 197 115 0 52 -17 84 -59 112 -42 28 -104 30 -147 4z"></path>
+          <path
+            d="M3017 432 c-79 -54 -86 -157 -16 -217 37 -31 68 -39 114 -31 104 20 143 153 66 229 -39 39 -120 49 -164 19z"
+          ></path>
+          <path
+            d="M3394 431 c-85 -52 -80 -177 9 -231 86 -53 197 13 197 115 0 52 -17 84 -59 112 -42 28 -104 30 -147 4z"
+          ></path>
         </g>
       </symbol>
-      <symbol id="photo" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1" stroke="currentColor">
+      <symbol
+        id="photo"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="1"
+        stroke="currentColor"
+      >
         <path
           stroke-linecap="round"
           stroke-linejoin="round"
           d="m2.25 15.75 5.159-5.159a2.25 2.25 0 0 1 3.182 0l5.159 5.159m-1.5-1.5 1.409-1.409a2.25 2.25 0 0 1 3.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 0 0 1.5-1.5V6a1.5 1.5 0 0 0-1.5-1.5H3.75A1.5 1.5 0 0 0 2.25 6v12a1.5 1.5 0 0 0 1.5 1.5Zm10.5-11.25h.008v.008h-.008V8.25Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z"
         ></path>
       </symbol>
-      <symbol id="plus" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+      <symbol
+        id="plus"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="currentColor"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M12 4.5v15m7.5-7.5h-15"
+        />
       </symbol>
-      <symbol id="ticket" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+      <symbol
+        id="ticket"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="currentColor"
+      >
         <path
           stroke-linecap="round"
           stroke-linejoin="round"
           d="M16.5 6v.75m0 3v.75m0 3v.75m0 3V18m-9-5.25h5.25M7.5 15h3M3.375 5.25c-.621 0-1.125.504-1.125 1.125v3.026a2.999 2.999 0 0 1 0 5.198v3.026c0 .621.504 1.125 1.125 1.125h17.25c.621 0 1.125-.504 1.125-1.125v-3.026a2.999 2.999 0 0 1 0-5.198V6.375c0-.621-.504-1.125-1.125-1.125H3.375Z"
         />
       </symbol>
-      <symbol id="user" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z"></path>
+      <symbol
+        id="user"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="currentColor"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z"
+        ></path>
       </symbol>
-      <symbol id="users" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+      <symbol
+        id="users"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="currentColor"
+      >
         <path
           stroke-linecap="round"
           stroke-linejoin="round"
           d="M15 19.128a9.38 9.38 0 0 0 2.625.372 9.337 9.337 0 0 0 4.121-.952 4.125 4.125 0 0 0-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 0 1 8.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0 1 11.964-3.07M12 6.375a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0Zm8.25 2.25a2.625 2.625 0 1 1-5.25 0 2.625 2.625 0 0 1 5.25 0Z"
         />
       </symbol>
-      <symbol id="user-circle" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+      <symbol
+        id="user-circle"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="currentColor"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
+        />
       </symbol>
-      <symbol id="window" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M3 8.25V18a2.25 2.25 0 0 0 2.25 2.25h13.5A2.25 2.25 0 0 0 21 18V8.25m-18 0V6a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 6v2.25m-18 0h18M5.25 6h.008v.008H5.25V6ZM7.5 6h.008v.008H7.5V6Zm2.25 0h.008v.008H9.75V6Z"></path>
+      <symbol
+        id="window"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="currentColor"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M3 8.25V18a2.25 2.25 0 0 0 2.25 2.25h13.5A2.25 2.25 0 0 0 21 18V8.25m-18 0V6a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 6v2.25m-18 0h18M5.25 6h.008v.008H5.25V6ZM7.5 6h.008v.008H7.5V6Zm2.25 0h.008v.008H9.75V6Z"
+        ></path>
       </symbol>
-      <symbol id="x-circle" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" d="m9.75 9.75 4.5 4.5m0-4.5-4.5 4.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"></path>
+      <symbol
+        id="x-circle"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="currentColor"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="m9.75 9.75 4.5 4.5m0-4.5-4.5 4.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+        ></path>
       </symbol>
-      <symbol id="x-mark" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12"></path>
+      <symbol
+        id="x-mark"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="currentColor"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M6 18 18 6M6 6l12 12"
+        ></path>
       </symbol>
     </svg>
 
     <!-- Header -->
-    <header class="sticky top-0 bg-white/80 backdrop-blur-lg dark:bg-slate-800 border-b border-b-slate-200 dark:border-b-slate-700 lg:bg-transparent lg:dark:bg-transparent h-16 lg:h-0 flex items-center justify-between px-4 z-30">
+    <header
+      class="sticky top-0 bg-white/80 backdrop-blur-lg dark:bg-slate-800 border-b border-b-slate-200 dark:border-b-slate-700 lg:bg-transparent lg:dark:bg-transparent h-16 lg:h-0 flex items-center justify-between px-4 z-30"
+    >
       <!-- Menu Open Btn -->
-      <div class="mobile-menu-open-btn bg-slate-100 dark:bg-slate-900 p-2 rounded-full lg:hidden">
+      <div
+        class="mobile-menu-open-btn bg-slate-100 dark:bg-slate-900 p-2 rounded-full lg:hidden"
+      >
         <svg class="size-7">
           <use href="#bars-3"></use>
         </svg>
@@ -166,7 +428,9 @@
     </header>
     <!-- End of Header -->
     <!-- Menu Wrapper -->
-    <div class="account__menu-wrapper fixed top-0 -right-64 lg:right-0 bottom-0 w-64 bg-white dark:bg-slate-800 transition-all z-50">
+    <div
+      class="account__menu-wrapper fixed top-0 -right-64 lg:right-0 bottom-0 w-64 bg-white dark:bg-slate-800 transition-all z-50"
+    >
       <!-- Menu Header -->
       <div class="flex items-center justify-between p-2">
         <!-- App Logo -->
@@ -177,7 +441,9 @@
         </a>
         <!-- End of App Logo -->
         <!-- Menu Close Btn-->
-        <div class="mobile-menu-close-btn bg-slate-100 dark:bg-slate-900 p-2 rounded-full lg:hidden">
+        <div
+          class="mobile-menu-close-btn bg-slate-100 dark:bg-slate-900 p-2 rounded-full lg:hidden"
+        >
           <svg class="size-6">
             <use href="#x-mark"></use>
           </svg>
@@ -186,8 +452,13 @@
       </div>
       <!-- End of Menu Header -->
       <!-- Menu -->
-      <ul class="text-lg sm:text-xl font-VazirMedium border-t border-t-slate-200 dark:border-slate-700">
-        <li class="account__menu-item account__menu-item--active" data-section="courses">
+      <ul
+        class="text-lg sm:text-xl font-VazirMedium border-t border-t-slate-200 dark:border-slate-700"
+      >
+        <li
+          class="account__menu-item account__menu-item--active"
+          data-section="courses"
+        >
           <svg class="size-6">
             <use href="#course"></use>
           </svg>
@@ -227,154 +498,245 @@
       <div class="container">
         <!-- Section Name -->
         <div class="flex justify-center">
-          <span class="account__section-name lg:hidden font-VazirMedium sm:text-lg inline-block py-2 px-4 theme-bg-color text-white rounded-b-2xl">دوره‌های من</span>
+          <span
+            class="account__section-name lg:hidden font-VazirMedium sm:text-lg inline-block py-2 px-4 theme-bg-color text-white rounded-b-2xl"
+            >دوره‌های من</span
+          >
         </div>
         <!-- End of Section Name -->
         <!-- Account Username -->
-        <div class="account__username font-VazirBlack text-xl sm:text-2xl lg:text-3xl mt-5 mb-8 sm:mb-10 text-center">
+        <div
+          class="account__username font-VazirBlack text-xl sm:text-2xl lg:text-3xl mt-5 mb-8 sm:mb-10 text-center"
+        >
           <!-- Username PlaceHolder -->
           <div class="flex justify-center gap-1 min-h-7 sm:min-h-8 lg:h-9">
-            <div class="w-24 sm:w-28 lg:w-36 h-5 lg:h-6 theme-bg-color-10 rounded-2xl animate-brightness dark:animate-dark-brightness"></div>
-            <div class="w-36 sm:w-48 lg:w-56 h-5 lg:h-6 bg-slate-200 dark:bg-slate-700 rounded-2xl animate-brightness dark:animate-dark-brightness"></div>
+            <div
+              class="w-24 sm:w-28 lg:w-36 h-5 lg:h-6 theme-bg-color-10 rounded-2xl animate-brightness dark:animate-dark-brightness"
+            ></div>
+            <div
+              class="w-36 sm:w-48 lg:w-56 h-5 lg:h-6 bg-slate-200 dark:bg-slate-700 rounded-2xl animate-brightness dark:animate-dark-brightness"
+            ></div>
           </div>
           <!-- End of Username PlaceHolder -->
         </div>
         <!-- End of Account Username -->
         <!-- Courses -->
         <section class="account__section-wrapper" data-section="courses">
-          <div class="account__courses-wrapper grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-6">
+          <div
+            class="account__courses-wrapper grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-6"
+          >
             <!-- PlaceHolder Course -->
-            <div class="bg-white dark:bg-slate-800 shadow dark:shadow-none dark:border dark:border-slate-700 rounded-2xl pb-5">
+            <div
+              class="bg-white dark:bg-slate-800 shadow dark:shadow-none dark:border dark:border-slate-700 rounded-2xl pb-5"
+            >
               <!-- Course Banner -->
-              <a class="block h-40 rounded-2xl overflow-hidden border-b border-b-slate-200 dark:border-b-slate-700">
-                <svg class="size-full text-slate-100 dark:text-slate-700 animate-brightness dark:animate-dark-brightness">
+              <a
+                class="block h-40 rounded-2xl overflow-hidden border-b border-b-slate-200 dark:border-b-slate-700"
+              >
+                <svg
+                  class="size-full text-slate-100 dark:text-slate-700 animate-brightness dark:animate-dark-brightness"
+                >
                   <use href="#photo"></use>
                 </svg>
               </a>
               <!-- End of Course Banner -->
               <!-- Course Name -->
               <div class="space-y-2 mt-4 px-4">
-                <div class="w-full h-4 bg-slate-100 dark:bg-slate-700 animate-brightness dark:animate-dark-brightness rounded-full"></div>
-                <div class="w-full h-4 bg-slate-100 dark:bg-slate-700 animate-brightness dark:animate-dark-brightness rounded-full"></div>
+                <div
+                  class="w-full h-4 bg-slate-100 dark:bg-slate-700 animate-brightness dark:animate-dark-brightness rounded-full"
+                ></div>
+                <div
+                  class="w-full h-4 bg-slate-100 dark:bg-slate-700 animate-brightness dark:animate-dark-brightness rounded-full"
+                ></div>
               </div>
               <!-- End of Course Name -->
             </div>
             <!-- End of PlaceHolder Course -->
             <!-- PlaceHolder Course -->
-            <div class="bg-white dark:bg-slate-800 shadow dark:shadow-none dark:border dark:border-slate-700 rounded-2xl pb-5">
+            <div
+              class="bg-white dark:bg-slate-800 shadow dark:shadow-none dark:border dark:border-slate-700 rounded-2xl pb-5"
+            >
               <!-- Course Banner -->
-              <a class="block h-40 rounded-2xl overflow-hidden border-b border-b-slate-200 dark:border-b-slate-700">
-                <svg class="size-full text-slate-100 dark:text-slate-700 animate-brightness dark:animate-dark-brightness">
+              <a
+                class="block h-40 rounded-2xl overflow-hidden border-b border-b-slate-200 dark:border-b-slate-700"
+              >
+                <svg
+                  class="size-full text-slate-100 dark:text-slate-700 animate-brightness dark:animate-dark-brightness"
+                >
                   <use href="#photo"></use>
                 </svg>
               </a>
               <!-- End of Course Banner -->
               <!-- Course Name -->
               <div class="space-y-2 mt-4 px-4">
-                <div class="w-full h-4 bg-slate-100 dark:bg-slate-700 animate-brightness dark:animate-dark-brightness rounded-full"></div>
-                <div class="w-full h-4 bg-slate-100 dark:bg-slate-700 animate-brightness dark:animate-dark-brightness rounded-full"></div>
+                <div
+                  class="w-full h-4 bg-slate-100 dark:bg-slate-700 animate-brightness dark:animate-dark-brightness rounded-full"
+                ></div>
+                <div
+                  class="w-full h-4 bg-slate-100 dark:bg-slate-700 animate-brightness dark:animate-dark-brightness rounded-full"
+                ></div>
               </div>
               <!-- End of Course Name -->
             </div>
             <!-- End of PlaceHolder Course -->
             <!-- PlaceHolder Course -->
-            <div class="bg-white dark:bg-slate-800 shadow dark:shadow-none dark:border dark:border-slate-700 rounded-2xl pb-5">
+            <div
+              class="bg-white dark:bg-slate-800 shadow dark:shadow-none dark:border dark:border-slate-700 rounded-2xl pb-5"
+            >
               <!-- Course Banner -->
-              <a class="block h-40 rounded-2xl overflow-hidden border-b border-b-slate-200 dark:border-b-slate-700">
-                <svg class="size-full text-slate-100 dark:text-slate-700 animate-brightness dark:animate-dark-brightness">
+              <a
+                class="block h-40 rounded-2xl overflow-hidden border-b border-b-slate-200 dark:border-b-slate-700"
+              >
+                <svg
+                  class="size-full text-slate-100 dark:text-slate-700 animate-brightness dark:animate-dark-brightness"
+                >
                   <use href="#photo"></use>
                 </svg>
               </a>
               <!-- End of Course Banner -->
               <!-- Course Name -->
               <div class="space-y-2 mt-4 px-4">
-                <div class="w-full h-4 bg-slate-100 dark:bg-slate-700 animate-brightness dark:animate-dark-brightness rounded-full"></div>
-                <div class="w-full h-4 bg-slate-100 dark:bg-slate-700 animate-brightness dark:animate-dark-brightness rounded-full"></div>
+                <div
+                  class="w-full h-4 bg-slate-100 dark:bg-slate-700 animate-brightness dark:animate-dark-brightness rounded-full"
+                ></div>
+                <div
+                  class="w-full h-4 bg-slate-100 dark:bg-slate-700 animate-brightness dark:animate-dark-brightness rounded-full"
+                ></div>
               </div>
               <!-- End of Course Name -->
             </div>
             <!-- End of PlaceHolder Course -->
             <!-- PlaceHolder Course -->
-            <div class="bg-white dark:bg-slate-800 shadow dark:shadow-none dark:border dark:border-slate-700 rounded-2xl pb-5">
+            <div
+              class="bg-white dark:bg-slate-800 shadow dark:shadow-none dark:border dark:border-slate-700 rounded-2xl pb-5"
+            >
               <!-- Course Banner -->
-              <a class="block h-40 rounded-2xl overflow-hidden border-b border-b-slate-200 dark:border-b-slate-700">
-                <svg class="size-full text-slate-100 dark:text-slate-700 animate-brightness dark:animate-dark-brightness">
+              <a
+                class="block h-40 rounded-2xl overflow-hidden border-b border-b-slate-200 dark:border-b-slate-700"
+              >
+                <svg
+                  class="size-full text-slate-100 dark:text-slate-700 animate-brightness dark:animate-dark-brightness"
+                >
                   <use href="#photo"></use>
                 </svg>
               </a>
               <!-- End of Course Banner -->
               <!-- Course Name -->
               <div class="space-y-2 mt-4 px-4">
-                <div class="w-full h-4 bg-slate-100 dark:bg-slate-700 animate-brightness dark:animate-dark-brightness rounded-full"></div>
-                <div class="w-full h-4 bg-slate-100 dark:bg-slate-700 animate-brightness dark:animate-dark-brightness rounded-full"></div>
+                <div
+                  class="w-full h-4 bg-slate-100 dark:bg-slate-700 animate-brightness dark:animate-dark-brightness rounded-full"
+                ></div>
+                <div
+                  class="w-full h-4 bg-slate-100 dark:bg-slate-700 animate-brightness dark:animate-dark-brightness rounded-full"
+                ></div>
               </div>
               <!-- End of Course Name -->
             </div>
             <!-- End of PlaceHolder Course -->
             <!-- PlaceHolder Course -->
-            <div class="bg-white dark:bg-slate-800 shadow dark:shadow-none dark:border dark:border-slate-700 rounded-2xl pb-5">
+            <div
+              class="bg-white dark:bg-slate-800 shadow dark:shadow-none dark:border dark:border-slate-700 rounded-2xl pb-5"
+            >
               <!-- Course Banner -->
-              <a class="block h-40 rounded-2xl overflow-hidden border-b border-b-slate-200 dark:border-b-slate-700">
-                <svg class="size-full text-slate-100 dark:text-slate-700 animate-brightness dark:animate-dark-brightness">
+              <a
+                class="block h-40 rounded-2xl overflow-hidden border-b border-b-slate-200 dark:border-b-slate-700"
+              >
+                <svg
+                  class="size-full text-slate-100 dark:text-slate-700 animate-brightness dark:animate-dark-brightness"
+                >
                   <use href="#photo"></use>
                 </svg>
               </a>
               <!-- End of Course Banner -->
               <!-- Course Name -->
               <div class="space-y-2 mt-4 px-4">
-                <div class="w-full h-4 bg-slate-100 dark:bg-slate-700 animate-brightness dark:animate-dark-brightness rounded-full"></div>
-                <div class="w-full h-4 bg-slate-100 dark:bg-slate-700 animate-brightness dark:animate-dark-brightness rounded-full"></div>
+                <div
+                  class="w-full h-4 bg-slate-100 dark:bg-slate-700 animate-brightness dark:animate-dark-brightness rounded-full"
+                ></div>
+                <div
+                  class="w-full h-4 bg-slate-100 dark:bg-slate-700 animate-brightness dark:animate-dark-brightness rounded-full"
+                ></div>
               </div>
               <!-- End of Course Name -->
             </div>
             <!-- End of PlaceHolder Course -->
             <!-- PlaceHolder Course -->
-            <div class="bg-white dark:bg-slate-800 shadow dark:shadow-none dark:border dark:border-slate-700 rounded-2xl pb-5">
+            <div
+              class="bg-white dark:bg-slate-800 shadow dark:shadow-none dark:border dark:border-slate-700 rounded-2xl pb-5"
+            >
               <!-- Course Banner -->
-              <a class="block h-40 rounded-2xl overflow-hidden border-b border-b-slate-200 dark:border-b-slate-700">
-                <svg class="size-full text-slate-100 dark:text-slate-700 animate-brightness dark:animate-dark-brightness">
+              <a
+                class="block h-40 rounded-2xl overflow-hidden border-b border-b-slate-200 dark:border-b-slate-700"
+              >
+                <svg
+                  class="size-full text-slate-100 dark:text-slate-700 animate-brightness dark:animate-dark-brightness"
+                >
                   <use href="#photo"></use>
                 </svg>
               </a>
               <!-- End of Course Banner -->
               <!-- Course Name -->
               <div class="space-y-2 mt-4 px-4">
-                <div class="w-full h-4 bg-slate-100 dark:bg-slate-700 animate-brightness dark:animate-dark-brightness rounded-full"></div>
-                <div class="w-full h-4 bg-slate-100 dark:bg-slate-700 animate-brightness dark:animate-dark-brightness rounded-full"></div>
+                <div
+                  class="w-full h-4 bg-slate-100 dark:bg-slate-700 animate-brightness dark:animate-dark-brightness rounded-full"
+                ></div>
+                <div
+                  class="w-full h-4 bg-slate-100 dark:bg-slate-700 animate-brightness dark:animate-dark-brightness rounded-full"
+                ></div>
               </div>
               <!-- End of Course Name -->
             </div>
             <!-- End of PlaceHolder Course -->
             <!-- PlaceHolder Course -->
-            <div class="bg-white dark:bg-slate-800 shadow dark:shadow-none dark:border dark:border-slate-700 rounded-2xl pb-5">
+            <div
+              class="bg-white dark:bg-slate-800 shadow dark:shadow-none dark:border dark:border-slate-700 rounded-2xl pb-5"
+            >
               <!-- Course Banner -->
-              <a class="block h-40 rounded-2xl overflow-hidden border-b border-b-slate-200 dark:border-b-slate-700">
-                <svg class="size-full text-slate-100 dark:text-slate-700 animate-brightness dark:animate-dark-brightness">
+              <a
+                class="block h-40 rounded-2xl overflow-hidden border-b border-b-slate-200 dark:border-b-slate-700"
+              >
+                <svg
+                  class="size-full text-slate-100 dark:text-slate-700 animate-brightness dark:animate-dark-brightness"
+                >
                   <use href="#photo"></use>
                 </svg>
               </a>
               <!-- End of Course Banner -->
               <!-- Course Name -->
               <div class="space-y-2 mt-4 px-4">
-                <div class="w-full h-4 bg-slate-100 dark:bg-slate-700 animate-brightness dark:animate-dark-brightness rounded-full"></div>
-                <div class="w-full h-4 bg-slate-100 dark:bg-slate-700 animate-brightness dark:animate-dark-brightness rounded-full"></div>
+                <div
+                  class="w-full h-4 bg-slate-100 dark:bg-slate-700 animate-brightness dark:animate-dark-brightness rounded-full"
+                ></div>
+                <div
+                  class="w-full h-4 bg-slate-100 dark:bg-slate-700 animate-brightness dark:animate-dark-brightness rounded-full"
+                ></div>
               </div>
               <!-- End of Course Name -->
             </div>
             <!-- End of PlaceHolder Course -->
             <!-- PlaceHolder Course -->
-            <div class="bg-white dark:bg-slate-800 shadow dark:shadow-none dark:border dark:border-slate-700 rounded-2xl pb-5">
+            <div
+              class="bg-white dark:bg-slate-800 shadow dark:shadow-none dark:border dark:border-slate-700 rounded-2xl pb-5"
+            >
               <!-- Course Banner -->
-              <a class="block h-40 rounded-2xl overflow-hidden border-b border-b-slate-200 dark:border-b-slate-700">
-                <svg class="size-full text-slate-100 dark:text-slate-700 animate-brightness dark:animate-dark-brightness">
+              <a
+                class="block h-40 rounded-2xl overflow-hidden border-b border-b-slate-200 dark:border-b-slate-700"
+              >
+                <svg
+                  class="size-full text-slate-100 dark:text-slate-700 animate-brightness dark:animate-dark-brightness"
+                >
                   <use href="#photo"></use>
                 </svg>
               </a>
               <!-- End of Course Banner -->
               <!-- Course Name -->
               <div class="space-y-2 mt-4 px-4">
-                <div class="w-full h-4 bg-slate-100 dark:bg-slate-700 animate-brightness dark:animate-dark-brightness rounded-full"></div>
-                <div class="w-full h-4 bg-slate-100 dark:bg-slate-700 animate-brightness dark:animate-dark-brightness rounded-full"></div>
+                <div
+                  class="w-full h-4 bg-slate-100 dark:bg-slate-700 animate-brightness dark:animate-dark-brightness rounded-full"
+                ></div>
+                <div
+                  class="w-full h-4 bg-slate-100 dark:bg-slate-700 animate-brightness dark:animate-dark-brightness rounded-full"
+                ></div>
               </div>
               <!-- End of Course Name -->
             </div>
@@ -383,13 +745,20 @@
         </section>
         <!-- End of Courses -->
         <!-- Questions Section -->
-        <section class="account__section-wrapper account__questions-wrapper space-y-3 hidden" data-section="questions"></section>
+        <section
+          class="account__section-wrapper account__questions-wrapper space-y-3 hidden"
+          data-section="questions"
+        ></section>
         <!-- End of Questions Section -->
         <!-- Tickets Section -->
         <section class="account__section-wrapper hidden" data-section="tickets">
           <!-- Ticket Btn -->
           <div class="flex justify-end pb-5">
-            <div class="flex gap-2 theme-bg-color hover:theme-hover-bg-color text-white rounded-full p-2 md:cursor-pointer transition-colors" id="ticket-btn" data-operation="open">
+            <div
+              class="flex gap-2 theme-bg-color hover:theme-hover-bg-color text-white rounded-full p-2 md:cursor-pointer transition-colors"
+              id="ticket-btn"
+              data-operation="open"
+            >
               <span class="hidden xs:block">تیکت جدید</span>
               <svg class="size-6">
                 <use href="#plus"></use>
@@ -404,46 +773,92 @@
           <div class="viewed-ticket__wrapper space-y-3 hidden"></div>
           <!-- End of Viewed Ticket  -->
           <!-- New Ticket Wrapper -->
-          <div class="new-ticket__wrapper bg-white dark:bg-slate-800 p-3.5 sm:p-5 rounded-2xl hidden">
+          <div
+            class="new-ticket__wrapper bg-white dark:bg-slate-800 p-3.5 sm:p-5 rounded-2xl hidden"
+          >
             <!-- Ticket Department and Subject -->
 
-            <p class="font-VazirMedium pb-3 mb-3 border-b border-b-slate-200 dark:border-b-slate-700">تیکت جدید</p>
+            <p
+              class="font-VazirMedium pb-3 mb-3 border-b border-b-slate-200 dark:border-b-slate-700"
+            >
+              تیکت جدید
+            </p>
             <div class="flex flex-col sm:flex-row gap-y-4 gap-x-8">
               <!-- Department -->
               <div class="flex flex-col gap-2 w-full">
                 <span class="font-VazirMedium">دپارتمان</span>
                 <div class="relative md:cursor-pointer">
-                  <div class="new-ticket__chosen-department-wrapper flex items-center justify-between p-2 bg-slate-100 dark:bg-slate-700 border border-slate-300 dark:border-slate-600 rounded-2xl">
-                    <span class="new-ticket__chosen-department" data-department="none">دپارتمان را انتخاب کنید</span>
+                  <div
+                    class="new-ticket__chosen-department-wrapper flex items-center justify-between p-2 bg-slate-100 dark:bg-slate-700 border border-slate-300 dark:border-slate-600 rounded-2xl"
+                  >
+                    <span
+                      class="new-ticket__chosen-department"
+                      data-department="none"
+                      >دپارتمان را انتخاب کنید</span
+                    >
                     <svg class="new-ticket__department-icon size-4">
                       <use href="#chevron-down"></use>
                     </svg>
                   </div>
-                  <div class="new-ticket__department-options-wrapper absolute top-12 right-0 left-0 bg-slate-100 dark:bg-slate-700 border border-slate-300 dark:border-slate-600 rounded-2xl z-30 overflow-hidden hidden">
-                    <div class="new-ticket__department-option p-2 md:hover:theme-bg-color-10" data-department="management">مدیریت</div>
-                    <div class="new-ticket__department-option p-2 md:hover:theme-bg-color-10" data-department="support">پشتیبانی</div>
-                    <div class="new-ticket__department-option p-2 md:hover:theme-bg-color-10" data-department="finance">مالی</div>
+                  <div
+                    class="new-ticket__department-options-wrapper absolute top-12 right-0 left-0 bg-slate-100 dark:bg-slate-700 border border-slate-300 dark:border-slate-600 rounded-2xl z-30 overflow-hidden hidden"
+                  >
+                    <div
+                      class="new-ticket__department-option p-2 md:hover:theme-bg-color-10"
+                      data-department="management"
+                    >
+                      مدیریت
+                    </div>
+                    <div
+                      class="new-ticket__department-option p-2 md:hover:theme-bg-color-10"
+                      data-department="support"
+                    >
+                      پشتیبانی
+                    </div>
+                    <div
+                      class="new-ticket__department-option p-2 md:hover:theme-bg-color-10"
+                      data-department="finance"
+                    >
+                      مالی
+                    </div>
                   </div>
                 </div>
               </div>
               <!-- End of Department -->
               <!-- Subject -->
               <div class="flex flex-col gap-2 w-full">
-                <label class="font-VazirMedium" for="subject-input">موضوع</label>
-                <input class="p-2 bg-slate-100 dark:bg-slate-700 border border-slate-300 dark:border-slate-600 outline-none rounded-xl" id="subject-input" type="text" placeholder="موضوع تیکت را وارد کنید" />
+                <label class="font-VazirMedium" for="subject-input"
+                  >موضوع</label
+                >
+                <input
+                  class="p-2 bg-slate-100 dark:bg-slate-700 border border-slate-300 dark:border-slate-600 outline-none rounded-xl"
+                  id="subject-input"
+                  type="text"
+                  placeholder="موضوع تیکت را وارد کنید"
+                />
               </div>
               <!-- End of Subject -->
             </div>
             <!-- End of Ticket Department and Subject -->
             <!-- New Ticket -->
             <div class="flex flex-col gap-2 mt-4 w-full">
-              <label class="font-VazirMedium" for="ticket-textarea">متن تیکت</label>
-              <textarea class="w-full h-40 bg-slate-100 dark:bg-slate-700 dark:placeholder:text-slate-300 placeholder:text-slate-500 rounded-2xl outline-none p-4 resize-none overflow-hidden" id="ticket-textarea" placeholder="متن تیکت را بنویسید"></textarea>
+              <label class="font-VazirMedium" for="ticket-textarea"
+                >متن تیکت</label
+              >
+              <textarea
+                class="w-full h-40 bg-slate-100 dark:bg-slate-700 dark:placeholder:text-slate-300 placeholder:text-slate-500 rounded-2xl outline-none p-4 resize-none overflow-hidden"
+                id="ticket-textarea"
+                placeholder="متن تیکت را بنویسید"
+              ></textarea>
             </div>
             <!-- End of New Ticket -->
             <!-- New Ticket Submit Btn -->
             <div class="flex justify-end mt-4">
-              <div class="new-ticket__submit-btn btn theme-bg-color md:cursor-pointer md:hover:theme-hover-bg-color select-none">ارسال تیکت</div>
+              <div
+                class="new-ticket__submit-btn btn theme-bg-color md:cursor-pointer md:hover:theme-hover-bg-color select-none"
+              >
+                ارسال تیکت
+              </div>
             </div>
             <!-- End of New Ticket Submit Btn -->
           </div>
@@ -451,15 +866,26 @@
         </section>
         <!-- End of Tickets Section -->
         <!-- Account Detail -->
-        <section class="account__section-wrapper hidden" data-section="account-detail">
-          <div class="account__detail-wrapper space-y-6 sm:space-y-0 sm:grid grid-cols-12 gap-6 text-lg font-VazirMedium">
+        <section
+          class="account__section-wrapper hidden"
+          data-section="account-detail"
+        >
+          <div
+            class="account__detail-wrapper space-y-6 sm:space-y-0 sm:grid grid-cols-12 gap-6 text-lg font-VazirMedium"
+          >
             <!-- Profile picture, Username and Email -->
-            <form class="col-span-12 md:col-span-6 xl:col-span-8 2xl:col-span-9 bg-white dark:bg-slate-800 shadow dark:shadow-none dark:border-slate-700 p-5 rounded-2xl">
+            <form
+              class="col-span-12 md:col-span-6 xl:col-span-8 2xl:col-span-9 bg-white dark:bg-slate-800 shadow dark:shadow-none dark:border-slate-700 p-5 rounded-2xl"
+            >
               <!-- Picture Wrapper -->
               <div class="relative size-36 mx-auto xs:mx-0">
                 <!-- Profile Picture -->
-                <div class="account__user-profile-picture size-full rounded-full overflow-hidden">
-                  <div class="flex items-center justify-center size-full theme-bg-color-10">
+                <div
+                  class="account__user-profile-picture size-full rounded-full overflow-hidden"
+                >
+                  <div
+                    class="flex items-center justify-center size-full theme-bg-color-10"
+                  >
                     <svg class="size-20 theme-text-color">
                       <use href="#user"></use>
                     </svg>
@@ -467,7 +893,9 @@
                 </div>
                 <!-- End of Profile Picture -->
                 <!-- Upload Picture Btn-->
-                <div class="change-profile-picture-btn absolute bottom-0 left-0 theme-bg-color text-white rounded-full p-1 md:cursor-pointer">
+                <div
+                  class="change-profile-picture-btn absolute bottom-0 left-0 theme-bg-color text-white rounded-full p-1 md:cursor-pointer"
+                >
                   <svg class="size-8">
                     <use href="#arrow-path"></use>
                   </svg>
@@ -476,31 +904,57 @@
               </div>
               <!-- End of Picture Wrapper -->
               <!-- Username and Email -->
-              <div class="flex flex-col sm:flex-row md:flex-col xl:flex-row gap-8 mt-10">
+              <div
+                class="flex flex-col sm:flex-row md:flex-col xl:flex-row gap-8 mt-10"
+              >
                 <!-- Username -->
                 <div class="flex flex-col gap-2 w-full">
                   <label for="username-input">نام کاربری</label>
-                  <input class="p-2 border theme-border-color bg-transparent outline-none rounded-xl" dir="ltr" id="username-input" type="text" />
+                  <input
+                    class="p-2 border theme-border-color bg-transparent outline-none rounded-xl"
+                    dir="ltr"
+                    id="username-input"
+                    type="text"
+                  />
                 </div>
                 <!-- End of Username -->
                 <!-- Email -->
                 <div class="flex flex-col gap-2 w-full">
                   <label for="email-input">ایمیل</label>
-                  <input class="p-2 border theme-border-color bg-transparent outline-none rounded-xl" dir="ltr" id="email-input" type="email" />
+                  <input
+                    class="p-2 border theme-border-color bg-transparent outline-none rounded-xl"
+                    dir="ltr"
+                    id="email-input"
+                    type="email"
+                  />
                 </div>
                 <!-- End of Email -->
               </div>
               <!-- End of Username and Email -->
-              <button class="account__detail-submit-btn btn w-full xs:w-64 mx-auto theme-bg-color md:hover:theme-hover-bg-color mt-8 outline-none" type="submit">تغییر اطلاعات</button>
+              <button
+                class="account__detail-submit-btn btn w-full xs:w-64 mx-auto theme-bg-color md:hover:theme-hover-bg-color mt-8 outline-none"
+                type="submit"
+              >
+                تغییر اطلاعات
+              </button>
             </form>
             <!-- End of Profile picture, Username and Email -->
             <!-- Password -->
-            <form class="col-span-12 md:col-span-6 xl:col-span-4 2xl:col-span-3 h-fit bg-white dark:bg-slate-800 shadow dark:shadow-none dark:border-slate-700 p-5 rounded-2xl space-y-8">
+            <form
+              class="col-span-12 md:col-span-6 xl:col-span-4 2xl:col-span-3 h-fit bg-white dark:bg-slate-800 shadow dark:shadow-none dark:border-slate-700 p-5 rounded-2xl space-y-8"
+            >
               <!-- Current Password -->
               <div class="flex flex-col gap-2 w-full relative">
                 <label for="current-password-input">رمز عبور فعلی</label>
-                <input class="p-2 border theme-border-color bg-transparent outline-none rounded-xl" dir="ltr" id="current-password-input" type="password" />
-                <svg class="account__display-password-btn size-6 absolute top-12 right-2 md:cursor-pointer md:hover:theme-text-color transition-colors">
+                <input
+                  class="p-2 border theme-border-color bg-transparent outline-none rounded-xl"
+                  dir="ltr"
+                  id="current-password-input"
+                  type="password"
+                />
+                <svg
+                  class="account__display-password-btn size-6 absolute top-12 right-2 md:cursor-pointer md:hover:theme-text-color transition-colors"
+                >
                   <use href="#eye"></use>
                   <use class="hidden" href="#eye-slash"></use>
                 </svg>
@@ -509,15 +963,27 @@
               <!-- New Password -->
               <div class="flex flex-col gap-2 w-full relative">
                 <label for="new-password-input">رمز عبور جدید</label>
-                <input class="p-2 border theme-border-color bg-transparent outline-none rounded-xl" dir="ltr" id="new-password-input" type="password" />
-                <svg class="account__display-password-btn size-6 absolute top-12 right-2 md:cursor-pointer md:hover:theme-text-color transition-colors">
+                <input
+                  class="p-2 border theme-border-color bg-transparent outline-none rounded-xl"
+                  dir="ltr"
+                  id="new-password-input"
+                  type="password"
+                />
+                <svg
+                  class="account__display-password-btn size-6 absolute top-12 right-2 md:cursor-pointer md:hover:theme-text-color transition-colors"
+                >
                   <use href="#eye"></use>
                   <use class="hidden" href="#eye-slash"></use>
                 </svg>
               </div>
               <!-- End of New Password -->
               <!-- End of Username and Email -->
-              <button class="account__password-submit-btn btn w-full xs:w-64 mx-auto theme-bg-color md:hover:theme-hover-bg-color outline-none" type="submit">تغییر رمز عبور</button>
+              <button
+                class="account__password-submit-btn btn w-full xs:w-64 mx-auto theme-bg-color md:hover:theme-hover-bg-color outline-none"
+                type="submit"
+              >
+                تغییر رمز عبور
+              </button>
             </form>
             <!-- End of Password -->
           </div>
@@ -528,29 +994,55 @@
     <!-- End of Main -->
 
     <!-- Change Theme -->
-    <div class="flex z-30 items-end gap-4 fixed left-2 bottom-5 theme-text-color select-none">
+    <div
+      class="flex z-30 items-end gap-4 fixed left-2 bottom-5 theme-text-color select-none"
+    >
       <!-- Show On Click -- Color Plate-->
-      <div class="color-plate hidden animate-open-up items-center flex-wrap gap-x-2 gap-y-2 p-1 bg-white dark:bg-slate-800 shadow w-48 sm:w-96 h-24 sm:h-12 rounded-lg transition-all child:cursor-pointer child:w-10 child:h-10 child:rounded-full">
-        <div class="change-theme-btn change-theme-btn--dark bg-slate-900" data-theme="dark"></div>
-        <div class="change-theme-btn bg-fuchsia-600 dark:bg-fuchsia-500" data-theme="fuchsia"></div>
+      <div
+        class="color-plate hidden animate-open-up items-center flex-wrap gap-x-2 gap-y-2 p-1 bg-white dark:bg-slate-800 shadow w-48 sm:w-96 h-24 sm:h-12 rounded-lg transition-all child:cursor-pointer child:w-10 child:h-10 child:rounded-full"
+      >
+        <div
+          class="change-theme-btn change-theme-btn--dark bg-slate-900"
+          data-theme="dark"
+        ></div>
+        <div
+          class="change-theme-btn bg-fuchsia-600 dark:bg-fuchsia-500"
+          data-theme="fuchsia"
+        ></div>
         <div class="change-theme-btn bg-rose-600" data-theme="rose"></div>
-        <div class="change-theme-btn bg-violet-600 dark:bg-violet-500" data-theme="violet"></div>
-        <div class="change-theme-btn bg-sky-600 dark:bg-sky-500" data-theme="sky"></div>
-        <div class="change-theme-btn bg-emerald-600 dark:bg-emerald-500" data-theme="emerald"></div>
+        <div
+          class="change-theme-btn bg-violet-600 dark:bg-violet-500"
+          data-theme="violet"
+        ></div>
+        <div
+          class="change-theme-btn bg-sky-600 dark:bg-sky-500"
+          data-theme="sky"
+        ></div>
+        <div
+          class="change-theme-btn bg-emerald-600 dark:bg-emerald-500"
+          data-theme="emerald"
+        ></div>
         <div class="change-theme-btn bg-lime-600" data-theme="lime"></div>
         <div class="change-theme-btn bg-amber-600" data-theme="amber"></div>
       </div>
       <!-- color plate Btn -->
-      <img class="color-plate-btn md:ml-1 size-10 md:size-12 lg:cursor-pointer transition-all" src="./images/icons/brush.png" />
+      <img
+        class="color-plate-btn md:ml-1 size-10 md:size-12 lg:cursor-pointer transition-all"
+        src="./images/icons/brush.png"
+      />
     </div>
     <!-- Overlay -->
-    <div class="overlay fixed inset-0 theme-bg-color-10 dark:bg-slate-700/50 backdrop-blur-md z-40 hide transition-all"></div>
+    <div
+      class="overlay fixed inset-0 theme-bg-color-10 dark:bg-slate-700/50 backdrop-blur-md z-40 hide transition-all"
+    ></div>
     <!-- Loader -->
-    <div class="loader-wrapper fixed inset-0 bg-slate-100 z-50 flex items-center justify-center transition-all">
+    <div
+      class="loader-wrapper fixed inset-0 bg-slate-100 z-50 flex items-center justify-center transition-all"
+    >
       <div class="loader"></div>
     </div>
 
     <script src="./vendor/Sweetalert2/sweetalert2.all.min.js"></script>
-    <script type="module" src="./js/pages/acount.js"></script>
+    <script type="module" src="./js/pages/account.js"></script>
   </body>
 </html>

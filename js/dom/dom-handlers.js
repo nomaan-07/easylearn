@@ -277,6 +277,7 @@ const handleCommentReply = (event, pageType, pageName, pageSlug, user) => {
       wrapper,
       commentID,
       pageType,
+
       pageName,
       pageSlug,
       user

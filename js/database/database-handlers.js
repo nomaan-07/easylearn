@@ -1,8 +1,8 @@
 import {
   confirmSweetAlert,
   sweetAlert,
-} from '../initializers/sweet-alert-initialize.js';
-import { textareaAutoResize, toggleTextarea } from '../ui/ui-handlers.js';
+} from "../initializers/sweet-alert-initialize.js";
+import { toggleTextarea } from "../ui/ui-handlers.js";
 import {
   getAllFromDatabase,
   getOneFromDatabase,
@@ -10,27 +10,25 @@ import {
   addToDatabase,
   getSomeFromDatabase,
   deleteFromDatabase,
-} from './database-api.js';
+} from "./database-api.js";
 import {
   signupFormValidation,
   loginFormValidation,
   accountChangeDetailFormValidation,
   accountChangePasswordFormValidation,
   newTicketValidation,
-} from '../validation/validation.js';
+} from "../validation/validation.js";
 import {
   persianMonths,
   generateRandomID,
   sortArray,
-  commentSectionTemplateHandler,
   getLocalCourses,
   applyDiscountToPrice,
   convertPersianNumbersToEnglish,
   getQueryParameters,
   createCourseObject,
   removeLoader,
-  scrollToAboveOfElement,
-} from '../utils/utils.js';
+} from "../utils/utils.js";
 import {
   latestCoursesWrapperElement,
   popularCoursesWrapperElement,
@@ -49,7 +47,7 @@ import {
   ticketTextareaElement,
   ticketBtn,
   localStorageUsername,
-} from '../dom/dom-elements.js';
+} from "../dom/dom-elements.js";
 import {
   insertToDOM,
   addCourseCardsToDOM,
@@ -74,16 +72,16 @@ import {
   addAdminViewedUserCoursesToDOM,
   addAdminViewedUserStatsToDOM,
   addCommentsOfPageToDom,
-} from '../dom/dom-handlers.js';
+} from "../dom/dom-handlers.js";
 
 // index.js
 const fetchAndDisplayMainPageCourses = async () => {
   try {
-    const allCourses = await getAllFromDatabase('courses');
-    const lastTenCourse = sortArray(allCourses, 'create', true).slice(0, 10);
+    const allCourses = await getAllFromDatabase("courses");
+    const lastTenCourse = sortArray(allCourses, "create", true).slice(0, 10);
     const twelveMostPopularCourse = sortArray(
       allCourses,
-      'students',
+      "students",
       true
     ).slice(0, 12);
     addCourseCardsToDOM(lastTenCourse, latestCoursesWrapperElement);
@@ -92,34 +90,34 @@ const fetchAndDisplayMainPageCourses = async () => {
       popularCoursesWrapperElement,
       true
     );
-    latestCoursesWrapperElement.addEventListener('click', (event) =>
+    latestCoursesWrapperElement.addEventListener("click", (event) =>
       addCourseToCartHandler(event, lastTenCourse)
     );
-    popularCoursesWrapperElement.addEventListener('click', (event) =>
+    popularCoursesWrapperElement.addEventListener("click", (event) =>
       addCourseToCartHandler(event, twelveMostPopularCourse)
     );
   } catch (error) {
-    console.error('Failed to Fetch courses', error);
+    console.error("Failed to Fetch courses", error);
   }
 };
 // index.js
 const fetchAndDisplayMainPageBlogs = async () => {
   try {
-    const allBlogs = await getAllFromDatabase('blogs');
-    const lastFiveBlog = sortArray(allBlogs, 'create', true).slice(0, 5);
+    const allBlogs = await getAllFromDatabase("blogs");
+    const lastFiveBlog = sortArray(allBlogs, "create", true).slice(0, 5);
     addBlogCardsToDOM(lastFiveBlog, lastBlogsWrapperElement);
   } catch (error) {
-    console.error('Failed to fetch blogs', error);
+    console.error("Failed to fetch blogs", error);
   }
 };
 
 // course.js - blog.js
 const fetchAndDisplayComments = async (commentsWrapper, pageID) => {
   try {
-    const comments = await getAllFromDatabase('comments');
+    const comments = await getAllFromDatabase("comments");
     addCommentsOfPageToDom(comments, commentsWrapper, pageID);
   } catch (error) {
-    console.error('Failed to fetch comments', error);
+    console.error("Failed to fetch comments", error);
   }
 };
 
@@ -147,25 +145,25 @@ const submitNewComment = async (
     };
 
     if (message) {
-      const user = await getOneFromDatabase('users', 'id', localStorageUserID);
+      const user = await getOneFromDatabase("users", "id", localStorageUserID);
 
-      await addToDatabase('comments', newComment);
+      await addToDatabase("comments", newComment);
       await updateInDatabase(
-        'users',
+        "users",
         { comments_count: user.comments_count + 1 },
         localStorageUserID
       );
 
-      sweetAlert('نظر شما ثبت شد و پس از بازبینی منتشر می‌شود.', 'success');
+      sweetAlert("نظر شما ثبت شد و پس از بازبینی منتشر می‌شود.", "success");
       toggleTextarea(newCommentWrapper, newCommentTextarea);
     } else {
       sweetAlert();
-      sweetAlert('نظر نمی‌تواند خالی باشد.', 'info');
+      sweetAlert("نظر نمی‌تواند خالی باشد.", "info");
     }
   } catch (error) {
-    console.error('Failed to submit new comment', error);
+    console.error("Failed to submit new comment", error);
 
-    sweetAlert('کامنت ثبت نشد، لطفا بعدا تلاش کنید.', 'failed');
+    sweetAlert("کامنت ثبت نشد، لطفا بعدا تلاش کنید.", "failed");
   }
 };
 
@@ -184,7 +182,7 @@ const submitCommentReply = async (
     let dbReplies = null;
     let newReply = null;
 
-    const comment = await getOneFromDatabase('comments', 'id', commentID);
+    const comment = await getOneFromDatabase("comments", "id", commentID);
 
     newReply = {
       id: generateRandomID(),
@@ -202,35 +200,35 @@ const submitCommentReply = async (
     dbReplies.push(newReply);
 
     if (message) {
-      const user = await getOneFromDatabase('users', 'id', localStorageUserID);
+      const user = await getOneFromDatabase("users", "id", localStorageUserID);
 
-      await updateInDatabase('comments', { replies: dbReplies }, commentID);
+      await updateInDatabase("comments", { replies: dbReplies }, commentID);
       await updateInDatabase(
-        'users',
+        "users",
         { comments_count: user.comments_count + 1 },
         localStorageUserID
       );
 
-      sweetAlert('نظر شما ثبت شد و پس از بازبینی منتشر می‌شود.', 'success');
+      sweetAlert("نظر شما ثبت شد و پس از بازبینی منتشر می‌شود.", "success");
       toggleTextarea(wrapper, textarea);
     } else {
-      sweetAlert('نظر نمی‌تواند خالی باشد.', 'info');
+      sweetAlert("نظر نمی‌تواند خالی باشد.", "info");
     }
   } catch (error) {
-    console.error('Failed to submit comment reply', error);
+    console.error("Failed to submit comment reply", error);
 
-    sweetAlert('کامنت ثبت نشد، لطفا بعدا تلاش کنید.', 'failed');
+    sweetAlert("کامنت ثبت نشد، لطفا بعدا تلاش کنید.", "failed");
   }
 };
 
 // blog.js
 const fetchAndDisplayRecantBlogs = async () => {
   try {
-    const allBlogs = await getAllFromDatabase('blogs');
-    const lastFourBlog = sortArray(allBlogs, 'create', true).slice(0, 4);
+    const allBlogs = await getAllFromDatabase("blogs");
+    const lastFourBlog = sortArray(allBlogs, "create", true).slice(0, 4);
     addRecentBlogsToDom(lastFourBlog, recentBlogsWrapper);
   } catch (error) {
-    console.error('Failed to fetch recent blogs', error);
+    console.error("Failed to fetch recent blogs", error);
   }
 };
 
@@ -241,7 +239,7 @@ const submitSignupForm = async (event) => {
   const emailInputValue = emailInput.value.trim();
   const passwordInputValue = passwordInput.value.trim();
 
-  const allUsers = await getAllFromDatabase('users');
+  const allUsers = await getAllFromDatabase("users");
 
   if (
     signupFormValidation(
@@ -259,16 +257,16 @@ const submitSignupForm = async (event) => {
       password: passwordInputValue,
     };
 
-    await addToDatabase('users', newUser);
-    localStorage.setItem('userID', newUser.id);
-    localStorage.setItem('username', newUser.username);
-    localStorage.removeItem('isAdmin');
+    await addToDatabase("users", newUser);
+    localStorage.setItem("userID", newUser.id);
+    localStorage.setItem("username", newUser.username);
+    localStorage.removeItem("isAdmin");
 
-    emailInput.value = '';
-    usernameInput.value = '';
-    passwordInput.value = '';
+    emailInput.value = "";
+    usernameInput.value = "";
+    passwordInput.value = "";
     setTimeout(() => {
-      location.replace('./index.html');
+      location.replace("./index.html");
     }, 2000);
   }
 };
@@ -280,24 +278,24 @@ const submitLoginForm = async (event) => {
   const emailInputValue = emailInput.value.trim();
   const passwordInputValue = passwordInput.value.trim();
 
-  const users = await getAllFromDatabase('users');
+  const users = await getAllFromDatabase("users");
 
   let user = users.find((user) => user.email === emailInputValue);
   if (loginFormValidation(emailInputValue, passwordInputValue, user)) {
-    await updateInDatabase('users', { login_at: new Date() }, user.id);
+    await updateInDatabase("users", { login_at: new Date() }, user.id);
 
-    localStorage.setItem('userID', user.id);
-    localStorage.setItem('username', user.username);
-    emailInput.value = '';
-    passwordInput.value = '';
+    localStorage.setItem("userID", user.id);
+    localStorage.setItem("username", user.username);
+    emailInput.value = "";
+    passwordInput.value = "";
     setTimeout(() => {
-      location.replace('./index.html');
+      location.replace("./index.html");
     }, 2000);
   }
 };
 
 const addCourseDetailToUserInDatabase = async (courses) => {
-  const user = await getOneFromDatabase('users', 'id', localStorageUserID);
+  const user = await getOneFromDatabase("users", "id", localStorageUserID);
 
   let coursesTotalPrice = 0;
   let freeCoursesCount = 0;
@@ -324,7 +322,7 @@ const addCourseDetailToUserInDatabase = async (courses) => {
     courses: user.courses,
   };
 
-  await updateInDatabase('users', userNewPurchaseData, localStorageUserID);
+  await updateInDatabase("users", userNewPurchaseData, localStorageUserID);
 
   return coursesTotalPrice;
 };
@@ -332,10 +330,10 @@ const addCourseDetailToUserInDatabase = async (courses) => {
 const addSellDataToDatabase = async (coursesTotalPrice) => {
   if (coursesTotalPrice === 0) return;
 
-  const databaseTableName = 'sell_expense';
+  const databaseTableName = "sell_expense";
 
   // this month and year
-  const dateArray = new Date().toLocaleDateString('fa').split('/');
+  const dateArray = new Date().toLocaleDateString("fa").split("/");
   const year = convertPersianNumbersToEnglish(dateArray[0]);
   const monthNumber = convertPersianNumbersToEnglish(dateArray[1]);
   const month = persianMonths[monthNumber - 1];
@@ -366,7 +364,7 @@ const purchaseCourses = async () => {
     let courseStudentCount = null;
 
     const userPurchasedCourses = getLocalCourses();
-    const dbCourses = await getAllFromDatabase('courses');
+    const dbCourses = await getAllFromDatabase("courses");
 
     let filteredCourses = dbCourses.filter((course) =>
       userPurchasedCourses.some(
@@ -375,13 +373,14 @@ const purchaseCourses = async () => {
     );
 
     for (let course of filteredCourses) {
-      const courseStudentsID = course.students_id || [];
-      courseStudentCount = course.students;
+      let courseStudentsID = course.students_id || "[]";
+      courseStudentsID = JSON.parse(courseStudentsID);
 
+      courseStudentCount = course.students;
       courseStudentsID.push(localStorageUserID);
       courseStudentCount++;
       await updateInDatabase(
-        'courses',
+        "courses",
         { students_id: courseStudentsID, students: courseStudentCount },
         course.id
       );
@@ -393,29 +392,29 @@ const purchaseCourses = async () => {
     );
     await addSellDataToDatabase(coursesTotalPrice);
 
-    localStorage.removeItem('courses');
-    sweetAlert('خرید با موفقیت انجام شد.', 'success');
+    localStorage.removeItem("courses");
+    sweetAlert("خرید با موفقیت انجام شد.", "success");
     updateCartPageDetail();
     updateHederCartDetail();
     setTimeout(() => {
-      location.href = './index.html';
+      location.href = "./index.html";
     }, 3000);
   } catch (error) {
-    console.error('Failed to purchase courses', error);
-    sweetAlert('متاسفانه خرید انجام نشد، لطفا بعدا تلاش کنید.', 'failed');
+    console.error("Failed to purchase courses", error);
+    sweetAlert("متاسفانه خرید انجام نشد، لطفا بعدا تلاش کنید.", "failed");
   }
 };
 
 // session.js
 const fetchAndDisplaySession = async () => {
-  const sessionID = Number(getQueryParameters('id'));
-  const courseSlug = getQueryParameters('course');
+  const sessionID = Number(getQueryParameters("id"));
+  const courseSlug = getQueryParameters("course");
 
   if (!sessionID || !courseSlug) {
-    location.replace('./404.html');
+    location.replace("./404.html");
   }
 
-  const dbCourse = await getOneFromDatabase('courses', 'slug', courseSlug);
+  const dbCourse = await getOneFromDatabase("courses", "slug", courseSlug);
 
   const course = createCourseObject(dbCourse);
 
@@ -424,12 +423,12 @@ const fetchAndDisplaySession = async () => {
 
 // session.js
 const fetchAndDisplaySessionQuestions = async () => {
-  const pageID = `${getQueryParameters('course')}_${getQueryParameters(
-    'id'
+  const pageID = `${getQueryParameters("course")}_${getQueryParameters(
+    "id"
   )}_${localStorageUserID}`;
-  const questionID = getQueryParameters('question');
+  const questionID = getQueryParameters("question");
 
-  const response = await getOneFromDatabase('question_answer', 'id', pageID);
+  const response = await getOneFromDatabase("question_answer", "id", pageID);
 
   if (!response) {
     addSessionQuestionsToDOM();
@@ -450,10 +449,10 @@ const submitSessionNewQuestion = async (
     const questionContent = newQuestionTextareaElement.value.trim();
 
     if (!questionContent) {
-      sweetAlert('سوال نمی‌تواند خالی باشد.', 'info');
+      sweetAlert("سوال نمی‌تواند خالی باشد.", "info");
       return;
     }
-    const tableName = 'question_answer';
+    const tableName = "question_answer";
 
     const newQuestion = {
       id: generateRandomID(),
@@ -465,14 +464,14 @@ const submitSessionNewQuestion = async (
       writer_name: localStorageUsername,
     };
 
-    newQuestionTextareaElement.value = '';
+    newQuestionTextareaElement.value = "";
 
     const pageID = `${course_slug}_${session_id}_${localStorageUserID}`;
 
     // get current session user questions
     let userSessionQuestions = await getOneFromDatabase(
       tableName,
-      'id',
+      "id",
       pageID
     );
 
@@ -499,25 +498,25 @@ const submitSessionNewQuestion = async (
     }
 
     // add question to user stats
-    const user = await getOneFromDatabase('users', 'id', localStorageUserID);
+    const user = await getOneFromDatabase("users", "id", localStorageUserID);
     await updateInDatabase(
-      'users',
+      "users",
       { questions_count: user.questions_count + 1 },
       localStorageUserID
     );
 
-    sweetAlert('سوال شما با موفقیت ارسال شد.', 'success');
-    newQuestionTextareaElement.value = '';
+    sweetAlert("سوال شما با موفقیت ارسال شد.", "success");
+    newQuestionTextareaElement.value = "";
     addSessionQuestionsToDOM(pageID, userSessionQuestions.questions);
   } catch (error) {
-    sweetAlert('ارسال سوال با خطا مواجه شد،‌ لطفا بعدا تلاش کنید.', 'failed');
-    console.error('Failed to submit question', error);
+    sweetAlert("ارسال سوال با خطا مواجه شد،‌ لطفا بعدا تلاش کنید.", "failed");
+    console.error("Failed to submit question", error);
   }
 };
 
 // account.js
 const fetchAndDisplayAccountCourses = async () => {
-  const dbCourses = await getAllFromDatabase('courses');
+  const dbCourses = await getAllFromDatabase("courses");
 
   let filteredCourses = dbCourses.filter(
     (course) =>
@@ -531,13 +530,13 @@ const fetchAndDisplayAccountCourses = async () => {
 const fetchAndDisplayAccountQuestions = async () => {
   try {
     const data = await getSomeFromDatabase(
-      'question_answer',
-      'user_id',
+      "question_answer",
+      "user_id",
       localStorageUserID
     );
     addUserAccountQuestionToDOM(data);
   } catch (error) {
-    console.error('Failed to fetch questions', error);
+    console.error("Failed to fetch questions", error);
   }
 };
 
@@ -561,22 +560,22 @@ const submitNewTicket = async (tickets) => {
       answers: [],
     };
 
-    const user = await getOneFromDatabase('users', 'id', localStorageUserID);
+    const user = await getOneFromDatabase("users", "id", localStorageUserID);
 
-    await addToDatabase('tickets', newTicket);
+    await addToDatabase("tickets", newTicket);
     await updateInDatabase(
-      'users',
+      "users",
       { tickets_count: user.tickets_count + 1 },
       localStorageUserID
     );
 
-    sweetAlert('تیکت با موفقیت ارسال شد.', 'success');
+    sweetAlert("تیکت با موفقیت ارسال شد.", "success");
     toggleNewTicketWrapper(ticketBtn);
     tickets.push(newTicket);
     addTicketsToDOM(tickets, true);
   } catch (error) {
-    console.error('Failed to submit ticket', error);
-    sweetAlert('ارسال تیکت با خطا مواجه شد، لطفا بعدا تلاش کنید.', 'failed');
+    console.error("Failed to submit ticket", error);
+    sweetAlert("ارسال تیکت با خطا مواجه شد، لطفا بعدا تلاش کنید.", "failed");
   }
 };
 
@@ -584,28 +583,28 @@ const submitNewTicket = async (tickets) => {
 const fetchAndDisplayUserTickets = async () => {
   try {
     const tickets = await getSomeFromDatabase(
-      'tickets',
-      'user_id',
+      "tickets",
+      "user_id",
       localStorageUserID
     );
 
     addTicketsToDOM(tickets, true);
 
-    newTicketSubmitBtn.addEventListener('click', () =>
+    newTicketSubmitBtn.addEventListener("click", () =>
       submitNewTicket(tickets)
     );
   } catch (error) {
-    console.error('Failed to fetch tickets', error);
+    console.error("Failed to fetch tickets", error);
   }
 };
 
 const submitTicketAnswer = (btn, ticket, tickets, isUserPanel) => {
   const textarea = document.querySelector(`#textarea-${ticket.id}`);
 
-  btn.addEventListener('click', async () => {
+  btn.addEventListener("click", async () => {
     const content = textarea.value.trim();
     if (!content) {
-      sweetAlert('پاسخ نمی‌تواند خالی باشد.', 'info');
+      sweetAlert("پاسخ نمی‌تواند خالی باشد.", "info");
       textarea.focus();
       return;
     }
@@ -616,10 +615,10 @@ const submitTicketAnswer = (btn, ticket, tickets, isUserPanel) => {
       id: answers.length + 1,
       created_at: new Date(),
       content,
-      writer_role: isUserPanel ? 'user' : 'admin',
+      writer_role: isUserPanel ? "user" : "admin",
       writer_name: isUserPanel
         ? localStorageUsername
-        : localStorage.getItem('admin-name'),
+        : localStorage.getItem("admin-name"),
     };
 
     const updatedTicketInfo = {
@@ -633,11 +632,11 @@ const submitTicketAnswer = (btn, ticket, tickets, isUserPanel) => {
 
     answers.push(newAnswer);
 
-    textarea.value = '';
+    textarea.value = "";
 
-    await updateInDatabase('tickets', updatedTicketInfo, ticket.id);
+    await updateInDatabase("tickets", updatedTicketInfo, ticket.id);
 
-    sweetAlert('پاسخ شما با موفقیت ارسال شد.', 'success');
+    sweetAlert("پاسخ شما با موفقیت ارسال شد.", "success");
 
     addTicketsToDOM(tickets, isUserPanel);
     addViewedTicketToDOM(ticket.id, tickets, isUserPanel);
@@ -647,30 +646,30 @@ const submitTicketAnswer = (btn, ticket, tickets, isUserPanel) => {
 // account.js - admin-panel.js
 const fetchAndDisplayAccountUserDetail = async (isAdmin) => {
   if (!localStorageUserID) {
-    location.replace('./auth.html?operation=login');
+    location.replace("./auth.html?operation=login");
     return;
   }
   if (isAdmin) {
-    const admin = await getOneFromDatabase('users', 'id', localStorageUserID);
+    const admin = await getOneFromDatabase("users", "id", localStorageUserID);
 
-    if (admin.role !== 'admin' && admin.role !== 'manager') {
-      location.replace('./account.html');
+    if (admin.role !== "admin" && admin.role !== "manager") {
+      location.replace("./account.html");
     }
 
     addUserAccountDetailToDOM(admin);
-    localStorage.setItem('admin-name', admin.username);
+    localStorage.setItem("admin-name", admin.username);
 
     return admin;
   }
 
-  const user = await getOneFromDatabase('users', 'id', localStorageUserID);
+  const user = await getOneFromDatabase("users", "id", localStorageUserID);
 
   if (!user) {
-    location.replace('./auth.html?operation=signup');
+    location.replace("./auth.html?operation=signup");
   }
 
-  if (user.role === 'admin' || user.role === 'manager') {
-    location.replace('./admin-panel.html');
+  if (user.role === "admin" || user.role === "manager") {
+    location.replace("./admin-panel.html");
   } else {
     addUserAccountDetailToDOM(user);
     removeLoader();
@@ -686,7 +685,7 @@ const submitAccountDetailChanges = async (event) => {
 
   const allUsers =
     (usernameInputValue || emailInputValue) &&
-    (await getAllFromDatabase('users'));
+    (await getAllFromDatabase("users"));
 
   if (
     allUsers &&
@@ -698,10 +697,10 @@ const submitAccountDetailChanges = async (event) => {
   ) {
     let username = usernameInputValue || usernameInput.placeholder;
     let email = emailInputValue || emailInput.placeholder;
-    updateInDatabase('users', { username, email }, localStorageUserID);
+    updateInDatabase("users", { username, email }, localStorageUserID);
     addUserAccountDetailToDOM({ username, email });
-    usernameInput.value = '';
-    emailInput.value = '';
+    usernameInput.value = "";
+    emailInput.value = "";
   }
 };
 
@@ -714,7 +713,7 @@ const submitAccountPasswordChanges = async (event) => {
 
   const user =
     (currentPasswordInputValue || newPasswordInputValue) &&
-    (await getOneFromDatabase('users', 'id', localStorageUserID));
+    (await getOneFromDatabase("users", "id", localStorageUserID));
 
   if (
     user &&
@@ -725,94 +724,94 @@ const submitAccountPasswordChanges = async (event) => {
     )
   ) {
     updateInDatabase(
-      'users',
+      "users",
       { password: newPasswordInputValue },
       localStorageUserID
     );
-    currentPasswordInputElem.value = '';
-    newPasswordInputElem.value = '';
+    currentPasswordInputElem.value = "";
+    newPasswordInputElem.value = "";
   }
 };
 
 // admin-panel.js
 const fetchAndDisplayAdminQuestions = async () => {
   try {
-    const data = await getAllFromDatabase('question_answer');
+    const data = await getAllFromDatabase("question_answer");
     addAdminPanelQuestionToDOM(data);
   } catch (error) {
-    console.error('Failed to fetch questions', error);
+    console.error("Failed to fetch questions", error);
   }
 };
 
 const closeQuestion = (btn, pageID, questions, adminName, data, page) => {
   try {
-    btn.addEventListener('click', async () => {
+    btn.addEventListener("click", async () => {
       const isConfirmed = await confirmSweetAlert(
-        'آیا مطمئن هستید؟',
-        'بستن پرسش'
+        "آیا مطمئن هستید؟",
+        "بستن پرسش"
       );
       if (!isConfirmed) return;
 
       const questionID = btn.dataset.question_id;
       const question = questions.find((question) => question.id === questionID);
       question.is_closed = true;
-      await updateInDatabase('question_answer', { questions }, pageID);
+      await updateInDatabase("question_answer", { questions }, pageID);
       addAdminPanelViewedQuestionToDOM(data, page, question, adminName);
     });
   } catch (error) {
-    console.error('Failed to close question', error);
-    sweetAlert('بستن سوال با خطا مواجه شد.', 'failed');
+    console.error("Failed to close question", error);
+    sweetAlert("بستن سوال با خطا مواجه شد.", "failed");
   }
 };
 
 // admin-panel.js
 const fetchAndDisplayAllTickets = async () => {
   try {
-    const tickets = await getAllFromDatabase('tickets');
+    const tickets = await getAllFromDatabase("tickets");
 
     addTicketsToDOM(tickets);
   } catch (error) {
-    console.error('Failed to fetch tickets', error);
+    console.error("Failed to fetch tickets", error);
   }
 };
 
 const closeTicket = (btn, ticket, tickets) => {
   try {
-    btn.addEventListener('click', async () => {
+    btn.addEventListener("click", async () => {
       const isConfirmed = await confirmSweetAlert(
-        'آیا مطمئن هستید؟',
-        'بستن تیکت'
+        "آیا مطمئن هستید؟",
+        "بستن تیکت"
       );
       if (!isConfirmed) return;
       ticket.is_closed = true;
-      await updateInDatabase('tickets', { is_closed: true }, ticket.id);
+      await updateInDatabase("tickets", { is_closed: true }, ticket.id);
       addTicketsToDOM(tickets);
       addViewedTicketToDOM(ticket.id, tickets, false);
-      sweetAlert('تیکت با موفقیت بسته شد.', 'success');
+      sweetAlert("تیکت با موفقیت بسته شد.", "success");
     });
   } catch (error) {
-    console.error('Failed to close ticket', error);
-    sweetAlert('بستن تیکت با خطا مواجه شد.', 'failed');
+    console.error("Failed to close ticket", error);
+    sweetAlert("بستن تیکت با خطا مواجه شد.", "failed");
   }
 };
 
 // admin-panel.js
 const fetchAndDisplayAllUsers = async () => {
   try {
-    const users = await getAllFromDatabase('users');
+    const users = await getAllFromDatabase("users");
     addAllUsersToDOM(users);
   } catch (error) {
-    console.error('Failed to fetch users');
+    console.error("Failed to fetch users");
   }
 };
 
 // admin-panel.js
 const fetchAndDisplaySellAndExpenseData = async () => {
   try {
-    const data = await getAllFromDatabase('sell_expense');
+    const data = await getAllFromDatabase("sell_expense");
     addSellAndExpenseDataToDOM(data);
   } catch (error) {
-    console.error('Failed to fetch chart data', error);
+    console.error("Failed to fetch chart data", error);
   }
 };
 
@@ -827,10 +826,10 @@ const submitQuestionAnswer = (
   const questionID = btn.parentElement.dataset.question_id;
   const textarea = document.querySelector(`#textarea-${questionID}`);
 
-  btn.addEventListener('click', async () => {
+  btn.addEventListener("click", async () => {
     const content = textarea.value.trim();
     if (!content) {
-      sweetAlert('پاسخ نمی‌تواند خالی باشد.', 'info');
+      sweetAlert("پاسخ نمی‌تواند خالی باشد.", "info");
       textarea.focus();
       return;
     }
@@ -842,17 +841,17 @@ const submitQuestionAnswer = (
       id: answers.length + 1,
       created_at: new Date(),
       content,
-      writer_role: adminName ? 'teacher' : 'user',
+      writer_role: adminName ? "teacher" : "user",
       writer_name: adminName ? adminName : localStorageUsername,
     };
 
     answers.push(newAnswer);
     question.is_answered = adminName ? true : false;
 
-    textarea.value = '';
+    textarea.value = "";
 
-    await updateInDatabase('question_answer', { questions }, pageID);
-    sweetAlert('پاسخ شما با موفقیت ارسال شد.', 'success');
+    await updateInDatabase("question_answer", { questions }, pageID);
+    sweetAlert("پاسخ شما با موفقیت ارسال شد.", "success");
 
     adminName
       ? addAdminPanelViewedQuestionToDOM(data, page, question, adminName)
@@ -863,40 +862,40 @@ const submitQuestionAnswer = (
 const changeUserRole = async (user, users) => {
   try {
     if (
-      (user.role === 'admin' || user.role === 'manager') &&
+      (user.role === "admin" || user.role === "manager") &&
       user.id === localStorageUserID
     ) {
-      sweetAlert('شما نمی توانید نقش خود را تغییر دهید.', 'info');
+      sweetAlert("شما نمی توانید نقش خود را تغییر دهید.", "info");
       return;
     }
 
-    const role = user.role === 'admin' ? 'کاربر' : 'پشتیبان';
+    const role = user.role === "admin" ? "کاربر" : "پشتیبان";
     const isConfirmed = await confirmSweetAlert(
       `آیا می‌ خواهید نقش ${user.username} به ${role} تغییر پیدا کند؟`,
-      'تغییر نقش',
-      '#059669'
+      "تغییر نقش",
+      "#059669"
     );
     if (!isConfirmed) return;
 
-    user.role = user.role === 'admin' ? 'user' : 'admin';
+    user.role = user.role === "admin" ? "user" : "admin";
 
-    await updateInDatabase('users', { role: user.role }, user.id);
+    await updateInDatabase("users", { role: user.role }, user.id);
     addAllUsersToDOM(users);
-    sweetAlert('نقش  کاربر با موفقیت تغییر کرد.', 'success');
+    sweetAlert("نقش  کاربر با موفقیت تغییر کرد.", "success");
     returnFromViewedUser(true);
   } catch (error) {
-    sweetAlert('خطا در تغییر نقش کاربر', 'failed');
-    console.error('Failed to change user role', error);
+    sweetAlert("خطا در تغییر نقش کاربر", "failed");
+    console.error("Failed to change user role", error);
   }
 };
 
 const deleteUser = async (user, users) => {
   try {
     if (
-      (user.role === 'admin' || user.role === 'manager') &&
+      (user.role === "admin" || user.role === "manager") &&
       user.id === localStorageUserID
     ) {
-      sweetAlert('شما نمی توانید حساب کاربری خود را حذف کنید.', 'info');
+      sweetAlert("شما نمی توانید حساب کاربری خود را حذف کنید.", "info");
       return;
     }
 
@@ -906,16 +905,16 @@ const deleteUser = async (user, users) => {
     );
     if (!isConfirmed) return;
 
-    await deleteFromDatabase('users', user.id);
+    await deleteFromDatabase("users", user.id);
     const filteredUsers = users.filter(
       (filteredUser) => filteredUser.id !== user.id
     );
     addAllUsersToDOM(filteredUsers);
-    sweetAlert('کاربر با موفقیت حذف شد.', 'success');
+    sweetAlert("کاربر با موفقیت حذف شد.", "success");
     returnFromViewedUser(true);
   } catch (error) {
-    sweetAlert('خطا در حذف کاربر', 'failed');
-    console.error('Failed to delete user', error);
+    sweetAlert("خطا در حذف کاربر", "failed");
+    console.error("Failed to delete user", error);
   }
 };
 
@@ -926,8 +925,8 @@ const deleteUserCourse = async (deleteUserCourseBtn, user, users) => {
 
     const deletedCourseID = deleteUserCourseBtn.dataset.course_id;
     const deletedCourse = await getOneFromDatabase(
-      'courses',
-      'id',
+      "courses",
+      "id",
       deletedCourseID
     );
 
@@ -941,7 +940,7 @@ const deleteUserCourse = async (deleteUserCourseBtn, user, users) => {
     if (deletedCourse.discount === 100) {
       user.free_courses_count -= 1;
       await updateInDatabase(
-        'users',
+        "users",
         {
           courses: filteredCourses,
           free_courses_count: user.free_courses_count,
@@ -951,7 +950,7 @@ const deleteUserCourse = async (deleteUserCourseBtn, user, users) => {
     } else {
       user.cash_courses_count -= 1;
       await updateInDatabase(
-        'users',
+        "users",
         {
           courses: filteredCourses,
           cash_courses_count: user.cash_courses_count,
@@ -960,7 +959,7 @@ const deleteUserCourse = async (deleteUserCourseBtn, user, users) => {
       );
     }
     await updateInDatabase(
-      'courses',
+      "courses",
       { students_id: filteredStudentsID },
       deletedCourseID
     );
@@ -972,10 +971,10 @@ const deleteUserCourse = async (deleteUserCourseBtn, user, users) => {
     addAllUsersToDOM(users);
     addAdminViewedUserCoursesToDOM(user, users);
     addAdminViewedUserStatsToDOM(user, users);
-    sweetAlert('دسترسی کاربر به دوره با موفقیت حذف شد.', 'success');
+    sweetAlert("دسترسی کاربر به دوره با موفقیت حذف شد.", "success");
   } catch (error) {
-    sweetAlert('خطا در حذف دوره', 'failed');
-    console.error('Failed to delete course', 'error');
+    sweetAlert("خطا در حذف دوره", "failed");
+    console.error("Failed to delete course", "error");
   }
 };
 
