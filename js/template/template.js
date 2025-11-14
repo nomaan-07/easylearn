@@ -1,10 +1,10 @@
-import { localStorageUserID } from '../dom/dom-elements.js';
-import { categoryInPersian, formatDate, formatTime } from './../utils/utils.js';
+import { localStorageUserID } from "../dom/dom-elements.js";
+import { categoryInPersian, formatDate, formatTime } from "./../utils/utils.js";
 
 const loginBtnTemplate = (userID) => {
-  const isAdmin = localStorage.getItem('isAdmin') === 'true';
-  let template = '';
-  let panelHref = isAdmin ? './admin-panel.html' : './account.html';
+  const isAdmin = localStorage.getItem("isAdmin") === "true";
+  let template = "";
+  let panelHref = isAdmin ? "./admin-panel.html" : "./account.html";
   if (userID) {
     template = `
       <a href="${panelHref}" class="btn gap-3 theme-bg-color lg:hover:theme-hover-bg-color select-none">
@@ -21,17 +21,17 @@ const loginBtnTemplate = (userID) => {
 
 // shared.js - index.js
 const courseCardTemplate = (course) => {
-  let purchaseBtnHiddenClass = 'flex ';
-  let studentBadgeHiddenClass = 'hidden ';
-  let discountHiddenClass = 'hidden ';
+  let purchaseBtnHiddenClass = "flex ";
+  let studentBadgeHiddenClass = "hidden ";
+  let discountHiddenClass = "hidden ";
 
   let finalPriceTemplate = null;
 
   if (course.isPurchased) {
-    purchaseBtnHiddenClass = 'hidden ';
-    studentBadgeHiddenClass = '';
+    purchaseBtnHiddenClass = "hidden ";
+    studentBadgeHiddenClass = "";
   }
-  if (course.discountPercent) discountHiddenClass = '';
+  if (course.discountPercent) discountHiddenClass = "";
 
   if (course.discountPercent === 100) {
     finalPriceTemplate = `
@@ -193,7 +193,7 @@ const blogCardTemplate = (blog) => {
 // course.js
 const courseInfoTemplate = (course) => {
   const courseStudentsID = course.students_id;
-  const price = course.price.toLocaleString('fa-IR');
+  const price = course.price.toLocaleString("fa-IR");
 
   let discountHiddenClass = `hidden `;
 
@@ -205,7 +205,7 @@ const courseInfoTemplate = (course) => {
   }
 
   if (course.timestamp) {
-    discountHiddenClass = '';
+    discountHiddenClass = "";
   }
 
   if (course.discount === 100) {
@@ -330,8 +330,13 @@ const courseDataTemplate = (course) => {
 
 // utils.js
 const headlineTemplate = (headline, sessions, number, headlineID = false) => {
-  let activeHeadlineTemplate = headlineID === headline.id ? `<div class="absolute top-7 md:top-9 xl:top-7 right-0 w-3 h-1 rounded-2xl theme-bg-color"></div>` : '';
-  let sessionPageClasses = headlineID ? '' : '2xl:flex-row 2xl:items-center 2xl:py-6';
+  let activeHeadlineTemplate =
+    headlineID === headline.id
+      ? `<div class="absolute top-7 md:top-9 xl:top-7 right-0 w-3 h-1 rounded-2xl theme-bg-color"></div>`
+      : "";
+  let sessionPageClasses = headlineID
+    ? ""
+    : "2xl:flex-row 2xl:items-center 2xl:py-6";
 
   if (!sessions) {
     sessions = '<p class ="p-4">هنوز جلسه ای قرار نگرفته است.</p>';
@@ -360,25 +365,34 @@ const headlineTemplate = (headline, sessions, number, headlineID = false) => {
 };
 
 // utils.js
-const courseHeadlineSessionTemplate = (session, number, isPurchased, courseSlug, activeSessionID = false) => {
-  let sessionPageClasses = activeSessionID ? '' : '2xl:flex-row 2xl:items-center';
+const courseHeadlineSessionTemplate = (
+  session,
+  number,
+  isPurchased,
+  courseSlug,
+  activeSessionID = false
+) => {
+  let sessionPageClasses = activeSessionID
+    ? ""
+    : "2xl:flex-row 2xl:items-center";
 
-  let sessionActiveClasses = '';
-  let sessionActiveNumberClasses = 'bg-white dark:bg-slate-800';
+  let sessionActiveClasses = "";
+  let sessionActiveNumberClasses = "bg-white dark:bg-slate-800";
 
   if (activeSessionID === session.id) {
-    sessionActiveClasses = 'border-r border-r-4 theme-border-color';
-    sessionActiveNumberClasses = 'theme-bg-color text-white';
+    sessionActiveClasses = "border-r border-r-4 theme-border-color";
+    sessionActiveNumberClasses = "theme-bg-color text-white";
   }
 
   let sessionHref = `href="session.html?id=${session.id}&course=${courseSlug}"`;
-  let sessionIcon = 'eye';
-  let sessionLockedClasses = 'md:hover:theme-text-color group';
+  let sessionIcon = "eye";
+  let sessionLockedClasses = "md:hover:theme-text-color group";
 
   if (session.isLocked && !isPurchased) {
-    sessionHref = '';
-    sessionIcon = 'lock-closed';
-    sessionLockedClasses = 'theme-bg-color-10 dark:bg-yellow-600/10 cursor-default headline__lock-session';
+    sessionHref = "";
+    sessionIcon = "lock-closed";
+    sessionLockedClasses =
+      "theme-bg-color-10 dark:bg-yellow-600/10 cursor-default headline__lock-session";
   }
 
   const template = `
@@ -402,10 +416,12 @@ const courseHeadlineSessionTemplate = (session, number, isPurchased, courseSlug,
 
 // utils.js
 const commentTemplate = (comment, replies) => {
-  const message = comment.message.replace(/\n/g, '<br>');
-  const date = `${formatDate(comment.created_at)} - ${formatTime(comment.created_at)}`;
+  const message = comment.message.replace(/\n/g, "<br>");
+  const date = `${formatDate(comment.created_at)} - ${formatTime(
+    comment.created_at
+  )}`;
 
-  let userAvatar = '';
+  let userAvatar = "";
 
   if (comment.image_src) {
     userAvatar = `<img class="w-full h-full object-cover" src="${comment.image_src}" alt="${comment.writer}">`;
@@ -463,10 +479,12 @@ const commentTemplate = (comment, replies) => {
 
 // utils.js
 const commentReplyTemplate = (reply) => {
-  const message = reply.message.replace(/\n/g, '<br>');
-  const date = `${formatDate(reply.created_at)} - ${formatTime(reply.created_at)}`;
+  const message = reply.message.replace(/\n/g, "<br>");
+  const date = `${formatDate(reply.created_at)} - ${formatTime(
+    reply.created_at
+  )}`;
 
-  let userAvatar = '';
+  let userAvatar = "";
   if (reply.image_src) {
     userAvatar = `<img class="w-full h-full object-cover" src="${reply.image_src}" alt="${reply.writer}">`;
   } else {
@@ -596,13 +614,13 @@ const recentBlogTemplate = (blog) => {
 
 // auth.js
 const authFormHeaderTemplate = (operation) => {
-  let template = '';
-  if (operation === 'signup') {
+  let template = "";
+  if (operation === "signup") {
     template = `
             <h2 class="font-VazirBold text-center text-2xl">ثبت نام</h2>
             <div class="text-center mt-3">قبلا ثبت نام کرده اید؟ <a class="theme-text-color" href="./auth.html?operation=login">وارد شوید.</a></div>
             `;
-  } else if (operation === 'login') {
+  } else if (operation === "login") {
     template = `
             <h2 class="font-VazirBold text-center text-2xl">ورود</h2>
             <div class="text-center mt-3">حساب کاربری ندارید؟ <a class="theme-text-color" href="./auth.html?operation=signup">ثبت نام کنید.</a></div>
@@ -614,7 +632,7 @@ const authFormHeaderTemplate = (operation) => {
 // dom-handlers.js
 const headerCartCourseTemplate = (course) => {
   let priceTemplate = null;
-  let discountClass = '';
+  let discountClass = "";
   if (course.discount === 100) {
     priceTemplate = `<span class="text-green-600 dark:text-green-400">${course.finalPrice}</span>`;
   } else {
@@ -626,7 +644,7 @@ const headerCartCourseTemplate = (course) => {
               </svg>
             </div>`;
   }
-  if (course.discount === 0) discountClass = 'hidden ';
+  if (course.discount === 0) discountClass = "hidden ";
 
   const template = `
     <!-- Cart Course -->
@@ -652,7 +670,7 @@ const headerCartCourseTemplate = (course) => {
 
 // cart.js
 const cartCourseTemplate = (course) => {
-  let price = course.price.toLocaleString('fa-IR');
+  let price = course.price.toLocaleString("fa-IR");
   let finalPriceTemplate = `
             <div class="flex items-end font-VazirMedium">
               <span class="text-green-600 dark:text-green-400">${course.finalPrice}</span>
@@ -661,10 +679,10 @@ const cartCourseTemplate = (course) => {
               </svg>
             </div>`;
   let discountHiddenClass = ``;
-  let priceHiddenClass = '';
+  let priceHiddenClass = "";
 
   if (!course.timestamp) {
-    discountHiddenClass = 'hidden ';
+    discountHiddenClass = "hidden ";
   }
 
   if (course.discount === 100) {
@@ -742,7 +760,7 @@ const accountCourseTemplate = (course) => {
 const panelQuestionTemplate = (question, isAdminPanel = false) => {
   let questionOverlay = `<div class="absolute inset-0 bg-amber-600/5"></div>`;
   let questionSituationTemplate = `<i class="text-amber-600">! در انتظار پاسخ</i>`;
-  let questionBorderColor = 'border-amber-600';
+  let questionBorderColor = "border-amber-600";
 
   if (question.is_closed) {
     questionOverlay = `<div class="absolute inset-0 bg-rose-600/5"></div>`;
@@ -753,7 +771,7 @@ const panelQuestionTemplate = (question, isAdminPanel = false) => {
     </svg>
     <i class="text-sm">بسته شده</i>
     </div>`;
-    questionBorderColor = 'border-rose-600';
+    questionBorderColor = "border-rose-600";
   } else if (question.is_answered) {
     questionOverlay = `<div class="absolute inset-0 bg-emerald-600/5"></div>`;
     questionSituationTemplate = `
@@ -763,13 +781,21 @@ const panelQuestionTemplate = (question, isAdminPanel = false) => {
           </svg>
           <i class="text-sm">پاسخ داده شده</i>
         </div>`;
-    questionBorderColor = 'border-emerald-600 dark:border-emerald-500';
+    questionBorderColor = "border-emerald-600 dark:border-emerald-500";
   }
 
   const template = `
-          <a ${isAdminPanel ? '' : `href="./session.html?id=${question.sessionID}&course=${question.courseSlug}&question=${question.id}"`} 
+          <a ${
+            isAdminPanel
+              ? ""
+              : `href="./session.html?id=${question.sessionID}&course=${question.courseSlug}&question=${question.id}"`
+          } 
             class="question__wrapper flex flex-col md:flex-row md:justify-between gap-5 mb-3 border-x-2 ${questionBorderColor} bg-white dark:bg-slate-800 rounded-2xl overflow-hidden p-3 shadow cursor-pointer relative group" 
-            ${isAdminPanel ? `data-page_id="${question.pageID}" data-question_id="${question.id}"` : ''}
+            ${
+              isAdminPanel
+                ? `data-page_id="${question.pageID}" data-question_id="${question.id}"`
+                : ""
+            }
           >
             ${questionOverlay}
             <!-- Course Name and Session Name -->
@@ -790,7 +816,9 @@ const panelQuestionTemplate = (question, isAdminPanel = false) => {
             <!-- End of Course Name and Session Name -->
             <!-- Situation and Date -->
             <div class="flex justify-between xs:justify-end flex-wrap gap-x-4 gap-y-2 text-sm sm:text-base">
-              <span>${formatTime(question.updated_at)} - ${formatDate(question.updated_at)}</span>
+              <span>${formatTime(question.updated_at)} - ${formatDate(
+    question.updated_at
+  )}</span>
               <!-- Situation -->
                 ${questionSituationTemplate}
               <!-- End of Situation -->
@@ -816,17 +844,17 @@ const userAccountProfilePictureTemplate = (imageSrc) => {
 };
 
 const ticketTemplate = (ticket) => {
-  let departmentIcon = 'user-circle';
+  let departmentIcon = "user-circle";
 
-  if (ticket.department === 'support') {
-    departmentIcon = 'users';
-  } else if (ticket.department === 'finance') {
-    departmentIcon = 'currency-dollar';
+  if (ticket.department === "support") {
+    departmentIcon = "users";
+  } else if (ticket.department === "finance") {
+    departmentIcon = "currency-dollar";
   }
 
   let ticketOverlay = `<div class="absolute inset-0 bg-amber-600/5"></div>`;
   let ticketSituationTemplate = `<i class="text-amber-600">! در انتظار پاسخ</i>`;
-  let ticketBorderColor = 'border-amber-600';
+  let ticketBorderColor = "border-amber-600";
 
   if (ticket.is_closed) {
     ticketOverlay = `<div class="absolute inset-0 bg-rose-600/5"></div>`;
@@ -837,7 +865,7 @@ const ticketTemplate = (ticket) => {
     </svg>
     <i class="text-sm">بسته شده</i>
     </div>`;
-    ticketBorderColor = 'border-rose-600';
+    ticketBorderColor = "border-rose-600";
   } else if (ticket.is_answered) {
     ticketOverlay = `<div class="absolute inset-0 bg-emerald-600/5"></div>`;
     ticketSituationTemplate = `
@@ -847,11 +875,13 @@ const ticketTemplate = (ticket) => {
           </svg>
           <i class="text-sm">پاسخ داده شده</i>
         </div>`;
-    ticketBorderColor = 'border-emerald-600 dark:border-emerald-500';
+    ticketBorderColor = "border-emerald-600 dark:border-emerald-500";
   }
 
   const template = `
-          <div class="ticket-wrapper flex flex-col md:flex-row md:justify-between gap-5 border-x-2 ${ticketBorderColor} bg-white dark:bg-slate-800 rounded-2xl overflow-hidden p-3 shadow cursor-pointer relative group" id="${ticket.id}">
+          <div class="ticket-wrapper flex flex-col md:flex-row md:justify-between gap-5 border-x-2 ${ticketBorderColor} bg-white dark:bg-slate-800 rounded-2xl overflow-hidden p-3 shadow cursor-pointer relative group" id="${
+    ticket.id
+  }">
             ${ticketOverlay}
             <!-- Department and Subject -->
             <div class="flex flex-wrap gap-3 text-sm sm:text-base md:group-hover:theme-text-color transition-colors z-10">
@@ -859,7 +889,9 @@ const ticketTemplate = (ticket) => {
                 <svg class="size-5 shrink-0">
                   <use href="#${departmentIcon}"></use>
                 </svg>
-                <span class="font-VazirMedium">${categoryInPersian(ticket.department)}</span>
+                <span class="font-VazirMedium">${categoryInPersian(
+                  ticket.department
+                )}</span>
               </div>
               <div class="flex items-center gap-1">
                 <svg class="size-4 shrink-0">
@@ -872,7 +904,9 @@ const ticketTemplate = (ticket) => {
 
             <!-- Situation and Date -->
             <div class="flex justify-between xs:justify-end flex-wrap gap-x-4 gap-y-2 text-sm sm:text-base">
-              <span>${formatTime(ticket.updated_at)} - ${formatDate(ticket.updated_at)}</span>
+              <span>${formatTime(ticket.updated_at)} - ${formatDate(
+    ticket.updated_at
+  )}</span>
               <!-- Situation -->
                 ${ticketSituationTemplate}
               <!-- End of Situation -->
@@ -883,24 +917,30 @@ const ticketTemplate = (ticket) => {
 };
 
 const questionAnswersTemplate = (answers, userPage = false) => {
-  if (!answers.length) return '';
+  if (!answers.length) return "";
 
-  let template = '';
+  let template = "";
 
   answers.forEach((answer) => {
-    const content = answer.content.replace(/\n/g, '<br>');
+    const content = answer.content.replace(/\n/g, "<br>");
     const date = formatDate(answer.created_at);
     const time = formatTime(answer.created_at);
 
-    if (answer.writer_role === 'teacher' || answer.writer_role === 'admin') {
+    if (answer.writer_role === "teacher" || answer.writer_role === "admin") {
       template += `
-            <div class="xs:w-2/3 2xl:w-7/12 ${userPage ? 'xs:mr-auto theme-bg-color text-white rounded-br-2xl' : 'theme-bg-color-10 dark:bg-sky-950 rounded-bl-2xl'} rounded-t-2xl mt-5 pt-2 pb-4 px-4 relative">
-              <div class="flex items-start justify-between gap-2 border-b ${userPage ? 'border-b-slate-200' : 'border-b-slate-400'}">              
+            <div class="xs:w-2/3 2xl:w-7/12 ${
+              userPage
+                ? "xs:mr-auto theme-bg-color text-white rounded-br-2xl"
+                : "theme-bg-color-10 dark:bg-sky-950 rounded-bl-2xl"
+            } rounded-t-2xl mt-5 pt-2 pb-4 px-4 relative">
+              <div class="flex items-start justify-between gap-2 border-b ${
+                userPage ? "border-b-slate-200" : "border-b-slate-400"
+              }">              
                 ${
                   userPage
                     ? `
                       <div>
-                        <p class="sm:text-lg">${answer.writer_name}</p>
+                        <p class="sm:text-lg">${answer.username}</p>
                         <span>مدرس</span>
                       </div>`
                     : '<p class="sm:text-lg my-auto">شما</p>'
@@ -917,14 +957,20 @@ const questionAnswersTemplate = (answers, userPage = false) => {
             </div>`;
     } else {
       template += `
-            <div class="xs:w-2/3 2xl:w-7/12 ${userPage ? 'theme-bg-color-10 dark:bg-sky-950 rounded-bl-2xl' : 'xs:mr-auto theme-bg-color text-white rounded-br-2xl'} rounded-t-2xl mt-5 pt-2 pb-4 px-4 relative">
-              <div class="flex items-start justify-between gap-2 border-b ${userPage ? 'border-b-slate-400' : 'border-b-slate-200'}">
+            <div class="xs:w-2/3 2xl:w-7/12 ${
+              userPage
+                ? "theme-bg-color-10 dark:bg-sky-950 rounded-bl-2xl"
+                : "xs:mr-auto theme-bg-color text-white rounded-br-2xl"
+            } rounded-t-2xl mt-5 pt-2 pb-4 px-4 relative">
+              <div class="flex items-start justify-between gap-2 border-b ${
+                userPage ? "border-b-slate-400" : "border-b-slate-200"
+              }">
                  ${
                    userPage
                      ? '<p class="sm:text-lg my-auto">شما</p>'
                      : `
                         <div>
-                          <p class="sm:text-lg">${answer.writer_name}</p>
+                          <p class="sm:text-lg">${answer.username}</p>
                           <span>کاربر</span>
                         </div>`
                  }
@@ -945,26 +991,26 @@ const questionAnswersTemplate = (answers, userPage = false) => {
 };
 
 const viewedTicketTemplate = (ticket, isUserPanel = false) => {
-  const content = ticket.content.replace(/\n/g, '<br>');
+  const content = ticket.content.replace(/\n/g, "<br>");
   const date = formatDate(ticket.created_at);
   const time = formatTime(ticket.created_at);
 
-  let departmentIcon = 'user-circle';
-  if (ticket.department === 'support') {
-    departmentIcon = 'users';
-  } else if (ticket.department === 'finance') {
-    departmentIcon = 'currency-dollar';
+  let departmentIcon = "user-circle";
+  if (ticket.department === "support") {
+    departmentIcon = "users";
+  } else if (ticket.department === "finance") {
+    departmentIcon = "currency-dollar";
   }
 
-  let ticketSituationText = 'در انتظار پاسخ';
-  let ticketSituationColor = 'bg-amber-600';
+  let ticketSituationText = "در انتظار پاسخ";
+  let ticketSituationColor = "bg-amber-600";
 
   if (ticket.is_closed) {
-    ticketSituationText = 'بسته شده';
-    ticketSituationColor = 'bg-rose-600';
+    ticketSituationText = "بسته شده";
+    ticketSituationColor = "bg-rose-600";
   } else if (ticket.is_answered) {
-    ticketSituationText = 'پاسخ داده شده';
-    ticketSituationColor = 'bg-emerald-600';
+    ticketSituationText = "پاسخ داده شده";
+    ticketSituationColor = "bg-emerald-600";
   }
 
   const template = `  
@@ -987,17 +1033,21 @@ const viewedTicketTemplate = (ticket, isUserPanel = false) => {
         </div>
         <!-- End ofTicket SUbject -->
         <!-- Writer Name -->
-        <div class="${isUserPanel ? 'hidden' : 'flex'} w-fit gap-2 text-sm sm:text-base">
+        <div class="${
+          isUserPanel ? "hidden" : "flex"
+        } w-fit gap-2 text-sm sm:text-base">
           <svg class="size-5 shrink-0">
             <use href="#user"></use>
           </svg>
-          <span>${ticket.writer_name}</span>
+          <span>${ticket.username}</span>
         </div>
         <!-- End of Username -->
       </div>
       <!-- End of Ticket Detail --> 
 
-      <div class="py-5 my-5 bg-white dark:bg-slate-800 px-2.5 rounded-2xl" id="${ticket.id}">
+      <div class="py-5 my-5 bg-white dark:bg-slate-800 px-2.5 rounded-2xl" id="${
+        ticket.id
+      }">
         <div class="question-header flex items-center px-2 gap-4 text-sm sm:text-base w-fit ${ticketSituationColor} rounded-full">
           <span class="text-white">${ticketSituationText}</span>
         </div>
@@ -1027,10 +1077,12 @@ const viewedTicketTemplate = (ticket, isUserPanel = false) => {
               <!-- New Answer Wrapper -->
                 <div class="new-answer__wrapper mt-6">
                   <!-- Answer Btn -->
-                  <div class="flex ${isUserPanel ? 'justify-end' : 'justify-between'}">
+                  <div class="flex ${
+                    isUserPanel ? "justify-end" : "justify-between"
+                  }">
                     ${
                       isUserPanel
-                        ? ''
+                        ? ""
                         : `
                           <div class="close-question-btn bg-rose-600 md:hover:bg-rose-700 text-white py-px px-1 flex items-center gap-1 select-none rounded-lg md:cursor-pointer transition-colors" data-question_id="${ticket.id}">
                             <svg class="size-5">
@@ -1040,7 +1092,9 @@ const viewedTicketTemplate = (ticket, isUserPanel = false) => {
                           </div>
                         `
                     }
-                    <div class="answer__open-btn bg-slate-300 py-px px-1 flex items-center gap-1 select-none rounded-lg text-slate-950 md:cursor-pointer md:hover:theme-text-color transition-colors" data-question_id="${ticket.id}">
+                    <div class="answer__open-btn bg-slate-300 py-px px-1 flex items-center gap-1 select-none rounded-lg text-slate-950 md:cursor-pointer md:hover:theme-text-color transition-colors" data-question_id="${
+                      ticket.id
+                    }">
                       <svg class="size-5">
                         <use href="#chat-bubble-left-ellipsis"></use>
                       </svg>
@@ -1049,9 +1103,15 @@ const viewedTicketTemplate = (ticket, isUserPanel = false) => {
                   </div>
                   <!-- End of Answer Btn -->
                   <!-- New Answer -->
-                  <div class="px-2 max-h-0 overflow-hidden" id="wrapper-${ticket.id}">
-                    <textarea class="new-answer__textarea w-full h-40 bg-slate-200 dark:bg-slate-600 dark:placeholder:text-slate-300 placeholder:text-slate-500 rounded-2xl outline-none p-4 resize-none overflow-hidden" id="textarea-${ticket.id}" placeholder="پاسخ..."></textarea>
-                    <div class="flex items-center justify-end gap-2 select-none" data-question_id="${ticket.id}">
+                  <div class="px-2 max-h-0 overflow-hidden" id="wrapper-${
+                    ticket.id
+                  }">
+                    <textarea class="new-answer__textarea w-full h-40 bg-slate-200 dark:bg-slate-600 dark:placeholder:text-slate-300 placeholder:text-slate-500 rounded-2xl outline-none p-4 resize-none overflow-hidden" id="textarea-${
+                      ticket.id
+                    }" placeholder="پاسخ..."></textarea>
+                    <div class="flex items-center justify-end gap-2 select-none" data-question_id="${
+                      ticket.id
+                    }">
                       <div class="new-answer__cancel-btn btn border theme-border-color md:hover:theme-bg-color-10 text-inherit md:cursor-pointer">لغو</div>
                       <div class="new-answer__submit-btn btn theme-bg-color border theme-border-color md:hover:theme-hover-bg-color md:cursor-pointer">ثبت</div>
                     </div>
@@ -1068,26 +1128,29 @@ const viewedTicketTemplate = (ticket, isUserPanel = false) => {
 };
 
 const adminPanelCommentTemplate = (comment) => {
-  const pageIcon = comment.page_type === 'course' ? 'course' : 'newspaper';
+  const pageIcon = comment.page_type === "course" ? "course" : "newspaper";
   const date = formatDate(comment.created_at);
-  const commentDataParentID = comment.comment_id ? `data-comment_parent_id=${comment.comment_id}` : '';
-  const message = comment.message.replace(/\n/g, '<br>');
+  const commentDataParentID = comment.comment_id
+    ? `data-comment_parent_id=${comment.comment_id}`
+    : "";
+  const message = comment.message.replace(/\n/g, "<br>");
 
   let confirmBtnColor = `bg-emerald-600/10`;
-  let confirmBtnHoverColor = 'md:hover:bg-emerald-600 dark:hover:bg-emerald-500';
-  let confirmBtnText = 'تایید';
-  let confirmText = 'تایید نشده';
-  let confirmIcon = 'x-mark';
-  let confirmTextColor = 'text-amber-600';
-  let confirmBorderColor = 'border-amber-600';
+  let confirmBtnHoverColor =
+    "md:hover:bg-emerald-600 dark:hover:bg-emerald-500";
+  let confirmBtnText = "تایید";
+  let confirmText = "تایید نشده";
+  let confirmIcon = "x-mark";
+  let confirmTextColor = "text-amber-600";
+  let confirmBorderColor = "border-amber-600";
   if (comment.confirmed) {
     confirmBtnColor = `bg-amber-600/10`;
-    confirmBtnHoverColor = 'md:hover:bg-amber-600';
-    confirmBtnText = 'عدم تایید';
-    confirmText = 'تایید شده';
-    confirmIcon = 'check';
-    confirmTextColor = 'text-emerald-600 dark:text-emerald-500';
-    confirmBorderColor = 'border-emerald-600 dark:border-emerald-500';
+    confirmBtnHoverColor = "md:hover:bg-amber-600";
+    confirmBtnText = "عدم تایید";
+    confirmText = "تایید شده";
+    confirmIcon = "check";
+    confirmTextColor = "text-emerald-600 dark:text-emerald-500";
+    confirmBorderColor = "border-emerald-600 dark:border-emerald-500";
   }
   const template = `
               <!-- Comment -->
@@ -1097,7 +1160,9 @@ const adminPanelCommentTemplate = (comment) => {
                 <svg class="size-5 shrink-0">
                   <use href="#${pageIcon}"></use>
                 </svg>
-                <a href="./${comment.page_type}.html?${comment.page_type}=${comment.page_slug}&comment=${comment.comment_id || comment.id}">${comment.page_name}</a>
+                <a href="./${comment.page_type}.html?${comment.page_type}=${
+    comment.page_slug
+  }&comment=${comment.comment_id || comment.id}">${comment.page_name}</a>
               </div>
               <!-- Date And Writer -->
               <div class="flex items-center justify-between flex-wrap gap-x-4 gap-y-2 text-sm md:text-base">
@@ -1129,7 +1194,9 @@ const adminPanelCommentTemplate = (comment) => {
               </div>
               <!-- End of Confirm Text -->
               <!-- Buttons -->
-              <div class="comment__buttons flex justify-between md:gap-3 items-center" data-comment_id=${comment.id} ${commentDataParentID}>
+              <div class="comment__buttons flex justify-between md:gap-3 items-center" data-comment_id=${
+                comment.id
+              } ${commentDataParentID}>
                 <!-- Confirm Btn -->
                 <div class="comment__confirm-btn px-4 rounded-full ${confirmBtnColor} ${confirmBtnHoverColor} md:hover:text-white md:cursor-pointer select-none transition-colors">${confirmBtnText}</div>
                 <!-- Delete Btn -->
@@ -1157,7 +1224,9 @@ const adminPanelViewedQuestionTemplate = (page, question) => {
   <!-- Question Detail -->
   <div class="bg-white dark:bg-slate-800 mb-3 space-y-3 py-3 px-2.5 rounded-2xl">
     <!-- Course Name -->
-    <a href="course.html?course=${page.course_slug}" class="flex w-fit gap-2 text-sm sm:text-base md:hover:theme-text-color transition-colors">
+    <a href="course.html?course=${
+      page.course_slug
+    }" class="flex w-fit gap-2 text-sm sm:text-base md:hover:theme-text-color transition-colors">
       <svg class="size-5 shrink-0">
         <use href="#course"></use>
       </svg>
@@ -1165,7 +1234,9 @@ const adminPanelViewedQuestionTemplate = (page, question) => {
     </a>
     <!-- End of Course Name -->
     <!-- Session Name -->
-    <a href="session.html?id=${page.session_id}&course=${page.course_slug}" class="flex w-fit gap-2 text-sm sm:text-base md:hover:theme-text-color transition-colors">
+    <a href="session.html?id=${page.session_id}&course=${
+    page.course_slug
+  }" class="flex w-fit gap-2 text-sm sm:text-base md:hover:theme-text-color transition-colors">
       <svg class="size-5 shrink-0">
         <use href="#window"></use>
       </svg>
@@ -1177,7 +1248,7 @@ const adminPanelViewedQuestionTemplate = (page, question) => {
       <svg class="size-5 shrink-0">
         <use href="#user"></use>
       </svg>
-      <span>${question.writer_name}</span>
+      <span>${question.username}</span>
     </div>
     <!-- End of Username -->
   </div>
@@ -1187,26 +1258,32 @@ const adminPanelViewedQuestionTemplate = (page, question) => {
 };
 
 const sessionQuestionTemplate = (question, number = null) => {
-  const content = question.content.replace(/\n/g, '<br>');
+  const content = question.content.replace(/\n/g, "<br>");
   const date = formatDate(question.created_at);
   const time = formatTime(question.created_at);
 
-  let questionSituationText = 'در انتظار پاسخ';
-  let questionSituationColor = 'bg-amber-600';
+  let questionSituationText = "در انتظار پاسخ";
+  let questionSituationColor = "bg-amber-600";
 
   if (question.is_closed) {
-    questionSituationText = 'بسته شده';
-    questionSituationColor = 'bg-rose-600';
+    questionSituationText = "بسته شده";
+    questionSituationColor = "bg-rose-600";
   } else if (question.is_answered) {
-    questionSituationText = 'پاسخ داده شده';
-    questionSituationColor = 'bg-emerald-600';
+    questionSituationText = "پاسخ داده شده";
+    questionSituationColor = "bg-emerald-600";
   }
 
   const template = `   
-      <div class="py-5 my-5 ${number ? 'border-x theme-border-color bg-slate-100 dark:bg-slate-700' : 'bg-white dark:bg-slate-800'} px-2.5 rounded-2xl" id="${question.id}">
+      <div class="py-5 my-5 ${
+        number
+          ? "border-x theme-border-color bg-slate-100 dark:bg-slate-700"
+          : "bg-white dark:bg-slate-800"
+      } px-2.5 rounded-2xl" id="${question.id}">
         <div class="question-header flex items-center gap-4 text-sm sm:text-base w-fit theme-bg-color-10 rounded-full">
-          ${number ? `<span class="pr-2">سوال ${number}</span>` : ''}
-          <div class=" h-full ${number ? 'rounded-l-full' : 'rounded-full'} px-2 ${questionSituationColor}">
+          ${number ? `<span class="pr-2">سوال ${number}</span>` : ""}
+          <div class=" h-full ${
+            number ? "rounded-l-full" : "rounded-full"
+          } px-2 ${questionSituationColor}">
             <span class="text-white">${questionSituationText}</span>
           </div>
          </div>
@@ -1236,10 +1313,12 @@ const sessionQuestionTemplate = (question, number = null) => {
               <!-- New Answer Wrapper -->
                 <div class="new-answer__wrapper mt-6">
                   <!-- Answer Btn -->
-                  <div class="flex ${number ? 'justify-end' : 'justify-between'}">
+                  <div class="flex ${
+                    number ? "justify-end" : "justify-between"
+                  }">
                     ${
                       number
-                        ? ''
+                        ? ""
                         : `
                           <div class="close-question-btn bg-rose-600 md:hover:bg-rose-700 text-white py-px px-1 flex items-center gap-1 select-none rounded-lg md:cursor-pointer transition-colors" data-question_id="${question.id}">
                             <svg class="size-5">
@@ -1249,7 +1328,9 @@ const sessionQuestionTemplate = (question, number = null) => {
                           </div>
                         `
                     }
-                    <div class="answer__open-btn bg-slate-300 py-px px-1 flex items-center gap-1 select-none rounded-lg text-slate-950 md:cursor-pointer md:hover:theme-text-color transition-colors" data-question_id="${question.id}">
+                    <div class="answer__open-btn bg-slate-300 py-px px-1 flex items-center gap-1 select-none rounded-lg text-slate-950 md:cursor-pointer md:hover:theme-text-color transition-colors" data-question_id="${
+                      question.id
+                    }">
                       <svg class="size-5">
                         <use href="#chat-bubble-left-ellipsis"></use>
                       </svg>
@@ -1258,9 +1339,15 @@ const sessionQuestionTemplate = (question, number = null) => {
                   </div>
                   <!-- End of Answer Btn -->
                   <!-- New Answer -->
-                  <div class="px-2 max-h-0 overflow-hidden" id="wrapper-${question.id}">
-                    <textarea class="new-answer__textarea w-full h-40 bg-slate-200 dark:bg-slate-600 dark:placeholder:text-slate-300 placeholder:text-slate-500 rounded-2xl outline-none p-4 resize-none overflow-hidden" id="textarea-${question.id}" placeholder="پاسخ..."></textarea>
-                    <div class="flex items-center justify-end gap-2 select-none" data-question_id="${question.id}">
+                  <div class="px-2 max-h-0 overflow-hidden" id="wrapper-${
+                    question.id
+                  }">
+                    <textarea class="new-answer__textarea w-full h-40 bg-slate-200 dark:bg-slate-600 dark:placeholder:text-slate-300 placeholder:text-slate-500 rounded-2xl outline-none p-4 resize-none overflow-hidden" id="textarea-${
+                      question.id
+                    }" placeholder="پاسخ..."></textarea>
+                    <div class="flex items-center justify-end gap-2 select-none" data-question_id="${
+                      question.id
+                    }">
                       <div class="new-answer__cancel-btn btn border theme-border-color md:hover:theme-bg-color-10 text-inherit md:cursor-pointer">لغو</div>
                       <div class="new-answer__submit-btn btn theme-bg-color border theme-border-color md:hover:theme-hover-bg-color md:cursor-pointer">ثبت</div>
                     </div>
@@ -1278,30 +1365,33 @@ const sessionQuestionTemplate = (question, number = null) => {
 };
 
 const adminPanelUserTemplate = (user, index) => {
-  let adminTag = user.id === localStorageUserID ? '<span class="absolute top-1 left-1 text-xs px-1 py-px rounded-full theme-bg-color-10 theme-text-color">شما</span>' : '';
+  let adminTag =
+    user.id === localStorageUserID
+      ? '<span class="absolute top-1 left-1 text-xs px-1 py-px rounded-full theme-bg-color-10 theme-text-color">شما</span>'
+      : "";
 
-  let userBgHoverColor = 'md:hover:bg-emerald-600/5';
-  let userType = 'کاربر';
-  let tagColors = 'bg-emerald-600/10 text-emerald-600 dark:text-emerald-500';
-  let adminBorder = '';
+  let userBgHoverColor = "md:hover:bg-emerald-600/5";
+  let userType = "کاربر";
+  let tagColors = "bg-emerald-600/10 text-emerald-600 dark:text-emerald-500";
+  let adminBorder = "";
 
-  if (user.role === 'manager') {
-    userBgHoverColor = 'md:hover:bg-fuchsia-600/5';
-    userType = 'مدیر';
-    tagColors = 'bg-slate-900 text-white';
-  } else if (user.role === 'admin') {
-    userBgHoverColor = 'md:hover:bg-rose-600/5';
-    userType = 'پشتیبان';
-    tagColors = 'bg-rose-600/10 text-rose-600';
-    adminBorder = 'border-x-2 border-slate-900';
+  if (user.role === "manager") {
+    userBgHoverColor = "md:hover:bg-fuchsia-600/5";
+    userType = "مدیر";
+    tagColors = "bg-slate-900 text-white";
+  } else if (user.role === "admin") {
+    userBgHoverColor = "md:hover:bg-rose-600/5";
+    userType = "پشتیبان";
+    tagColors = "bg-rose-600/10 text-rose-600";
+    adminBorder = "border-x-2 border-slate-900";
   }
 
-  if (user.role === 'manager' && user.id === localStorageUserID) {
-    adminBorder = 'border-x border-slate-900';
-  } else if (user.role === 'admin' && user.id === localStorageUserID) {
-    adminBorder = 'border-x border-rose-900';
+  if (user.role === "manager" && user.id === localStorageUserID) {
+    adminBorder = "border-x border-slate-900";
+  } else if (user.role === "admin" && user.id === localStorageUserID) {
+    adminBorder = "border-x border-rose-900";
   } else {
-    adminBorder = '';
+    adminBorder = "";
   }
 
   const template = `
@@ -1335,23 +1425,29 @@ const adminPanelUserTemplate = (user, index) => {
 };
 
 const adminPanelUserInfoTemplate = (user, number) => {
-  let adminTag = user.id === localStorageUserID ? '<span class="absolute top-1 left-1 px-1 py-px rounded-full theme-bg-color-10 theme-text-color">شما</span>' : '';
+  let adminTag =
+    user.id === localStorageUserID
+      ? '<span class="absolute top-1 left-1 px-1 py-px rounded-full theme-bg-color-10 theme-text-color">شما</span>'
+      : "";
 
-  let userType = 'کاربر';
-  let tagColors = 'bg-emerald-600/10 text-emerald-600 dark:text-emerald-500';
-  let userChangeRoleBtnColors = 'bg-emerald-600/10 text-emerald-600 dark:text-emerald-500 md:hover:bg-emerald-600 dark:md:hover:bg-emerald-500';
-  let changeRoleBtnText = 'تغییر نقش کاربر به پشتیبان';
+  let userType = "کاربر";
+  let tagColors = "bg-emerald-600/10 text-emerald-600 dark:text-emerald-500";
+  let userChangeRoleBtnColors =
+    "bg-emerald-600/10 text-emerald-600 dark:text-emerald-500 md:hover:bg-emerald-600 dark:md:hover:bg-emerald-500";
+  let changeRoleBtnText = "تغییر نقش کاربر به پشتیبان";
 
-  if (user.role === 'manager') {
-    userType = 'مدیر';
-    tagColors = 'bg-slate-900 text-white';
-    userChangeRoleBtnColors = 'bg-slate-600/10 text-slate-600 md:hover:bg-slate-600';
-    changeRoleBtnText = 'تغییر نقش مدیر به پشتیبان';
-  } else if (user.role === 'admin') {
-    userChangeRoleBtnColors = 'bg-amber-600/10 text-amber-600 md:hover:bg-amber-600';
-    userType = 'پشتیبان';
-    tagColors = 'bg-rose-600/10 text-rose-600';
-    changeRoleBtnText = 'تغییر نقش پشتیبان به کاربر';
+  if (user.role === "manager") {
+    userType = "مدیر";
+    tagColors = "bg-slate-900 text-white";
+    userChangeRoleBtnColors =
+      "bg-slate-600/10 text-slate-600 md:hover:bg-slate-600";
+    changeRoleBtnText = "تغییر نقش مدیر به پشتیبان";
+  } else if (user.role === "admin") {
+    userChangeRoleBtnColors =
+      "bg-amber-600/10 text-amber-600 md:hover:bg-amber-600";
+    userType = "پشتیبان";
+    tagColors = "bg-rose-600/10 text-rose-600";
+    changeRoleBtnText = "تغییر نقش پشتیبان به کاربر";
   }
 
   const template = `
@@ -1410,15 +1506,15 @@ const adminPanelUserInfoTemplate = (user, number) => {
 
 const adminPanelUserStatsTemplate = (user) => {
   let isAdmin = false;
-  let userType = 'کاربر';
+  let userType = "کاربر";
   let totalCourses = user.free_courses_count + user.cash_courses_count;
 
-  if (user.role === 'manager') {
+  if (user.role === "manager") {
     isAdmin = true;
-    userType = 'مدیر';
-  } else if (user.role === 'admin') {
+    userType = "مدیر";
+  } else if (user.role === "admin") {
     isAdmin = true;
-    userType = 'پشتیبان';
+    userType = "پشتیبان";
   }
 
   const template = `              
@@ -1435,18 +1531,26 @@ const adminPanelUserStatsTemplate = (user) => {
                   <use href="#pencil-square"></use>
                 </svg>
                 <span class="font-VazirLight mt-2 mb-1.5">تاریخ ثبت نام</span>
-                <span class="font-VazirBold">${formatDate(user.created_at)} - ${formatTime(user.created_at)}</span>
+                <span class="font-VazirBold">${formatDate(
+                  user.created_at
+                )} - ${formatTime(user.created_at)}</span>
               </div>
               <div class="flex flex-col items-center bg-white dark:bg-slate-800 rounded-2xl p-1 sm:p-2 text-sm">
                 <svg class="size-8 sm:size-10 theme-text-color">
                   <use href="#arrow-left-end-on-rectangle"></use>
                 </svg>
                 <span class="font-VazirLight mt-2 mb-1.5">آخرین ورود</span>
-                <span class="font-VazirBold">${user.login_at ? `${formatDate(user.login_at)} - ${formatTime(user.login_at)}` : '...'}</span>
+                <span class="font-VazirBold">${
+                  user.login_at
+                    ? `${formatDate(user.login_at)} - ${formatTime(
+                        user.login_at
+                      )}`
+                    : "..."
+                }</span>
               </div>
               ${
                 isAdmin
-                  ? ''
+                  ? ""
                   : `
                     <div class="flex flex-col items-center bg-white dark:bg-slate-800 rounded-2xl p-1 sm:p-2 text-sm">
                       <svg class="size-8 sm:size-10 theme-text-color">
@@ -1455,14 +1559,20 @@ const adminPanelUserStatsTemplate = (user) => {
                       <span class="font-VazirLight mt-2 mb-1.5">تعداد دوره ها</span>
                       <span class="font-VazirBold">${totalCourses}</span>
                     </div>
-                    <div class="${totalCourses ? 'flex' : 'hidden'} flex-col items-center bg-white dark:bg-slate-800 rounded-2xl p-1 sm:p-2 text-sm">
+                    <div class="${
+                      totalCourses ? "flex" : "hidden"
+                    } flex-col items-center bg-white dark:bg-slate-800 rounded-2xl p-1 sm:p-2 text-sm">
                       <svg class="size-8 sm:size-10 theme-text-color">
                         <use href="#tv"></use>
                       </svg>
                       <span class="font-VazirLight mt-2 mb-1.5">دوره های رایگان</span>
-                      <span class="font-VazirBold">${user.free_courses_count}</span>
+                      <span class="font-VazirBold">${
+                        user.free_courses_count
+                      }</span>
                     </div>
-                    <div class="${totalCourses ? 'flex' : 'hidden'} flex flex-col items-center bg-white dark:bg-slate-800 rounded-2xl p-1 sm:p-2 text-sm">
+                    <div class="${
+                      totalCourses ? "flex" : "hidden"
+                    } flex flex-col items-center bg-white dark:bg-slate-800 rounded-2xl p-1 sm:p-2 text-sm">
                       <div class="relative">
                         <svg class="absolute top-1.5 sm:top-2 left-2 sm:left-2.5 size-4 sm:size-5 shrink-0 theme-text-color">
                           <use href="#currency-dollar"></use>
@@ -1472,7 +1582,9 @@ const adminPanelUserStatsTemplate = (user) => {
                         </svg>
                       </div>
                       <span class="font-VazirLight mt-2 mb-1.5">دوره های نقدی</span>
-                      <span class="font-VazirBold">${user.cash_courses_count}</span>
+                      <span class="font-VazirBold">${
+                        user.cash_courses_count
+                      }</span>
                     </div>
                     <div class="flex flex-col items-center bg-white dark:bg-slate-800 rounded-2xl p-1 sm:p-2 text-sm">
                       <svg class="size-8 sm:size-10 theme-text-color">
@@ -1480,18 +1592,34 @@ const adminPanelUserStatsTemplate = (user) => {
                       </svg>
                       <span class="font-VazirLight mt-2 mb-1.5">مجموع پرداخت ها</span>
                       <div class="flex">
-                        <span class="font-VazirBold ${user.expense ? 'text-emerald-600 dark:text-emerald-500' : 'text-rose-600'}">${user.expense ? user.expense.toLocaleString('fa') : 'صـــفر'}</span>
+                        <span class="font-VazirBold ${
+                          user.expense
+                            ? "text-emerald-600 dark:text-emerald-500"
+                            : "text-rose-600"
+                        }">${
+                      user.expense
+                        ? user.expense.toLocaleString("fa")
+                        : "صـــفر"
+                    }</span>
                         <svg class="size-6 mr-[-3px] -translate-y-1.5">
                           <use href="#toman"></use>
                         </svg>
                       </div>
                     </div>
-                    <div class="${user.last_expense_date ? 'flex' : 'hidden'} flex-col items-center bg-white dark:bg-slate-800 rounded-2xl p-1 sm:p-2 text-sm">
+                    <div class="${
+                      user.last_expense_date ? "flex" : "hidden"
+                    } flex-col items-center bg-white dark:bg-slate-800 rounded-2xl p-1 sm:p-2 text-sm">
                       <svg class="size-8 sm:size-10 theme-text-color">
                         <use href="#calendar-days"></use>
                       </svg>
                       <span class="font-VazirLight mt-2 mb-1.5">تاریخ آخرین پرداخت</span>
-                      <span class="font-VazirBold">${user.last_expense_date ? `${formatDate(user.last_expense_date)} - ${formatTime(user.last_expense_date)}` : '...'}</span>
+                      <span class="font-VazirBold">${
+                        user.last_expense_date
+                          ? `${formatDate(
+                              user.last_expense_date
+                            )} - ${formatTime(user.last_expense_date)}`
+                          : "..."
+                      }</span>
                     </div>`
               }
 
@@ -1499,22 +1627,40 @@ const adminPanelUserStatsTemplate = (user) => {
                 <svg class="size-8 sm:size-10 theme-text-color">
                   <use href="#ticket"></use>
                 </svg>
-                <span class="font-VazirLight mt-2 mb-1.5">${isAdmin ? 'بررسی تیکت' : 'تعداد تیکت ها'}</span>
-                <span class="font-VazirBold">${isAdmin ? `${user.admin_stats[0].tickets_count}` : `${user.tickets_count}`}</span>
+                <span class="font-VazirLight mt-2 mb-1.5">${
+                  isAdmin ? "بررسی تیکت" : "تعداد تیکت ها"
+                }</span>
+                <span class="font-VazirBold">${
+                  isAdmin
+                    ? `${user.admin_stats[0].tickets_count}`
+                    : `${user.tickets_count}`
+                }</span>
               </div>
               <div class="flex flex-col items-center bg-white dark:bg-slate-800 rounded-2xl p-1 sm:p-2 text-sm">
                 <svg class="size-8 sm:size-10 theme-text-color">
                   <use href="#chat-bubble-left-right"></use>
                 </svg>
-                <span class="font-VazirLight mt-2 mb-1.5">${isAdmin ? 'بررسی پرسش' : 'تعداد پرسش ها'}</span>
-                <span class="font-VazirBold">${isAdmin ? `${user.admin_stats[0].questions_count}` : `${user.questions_count}`}</span>
+                <span class="font-VazirLight mt-2 mb-1.5">${
+                  isAdmin ? "بررسی پرسش" : "تعداد پرسش ها"
+                }</span>
+                <span class="font-VazirBold">${
+                  isAdmin
+                    ? `${user.admin_stats[0].questions_count}`
+                    : `${user.questions_count}`
+                }</span>
               </div>
               <div class="flex flex-col items-center bg-white dark:bg-slate-800 rounded-2xl p-1 sm:p-2 text-sm">
                 <svg class="size-8 sm:size-10 theme-text-color">
                   <use href="#chat-bubble-bottom-center-text"></use>
                 </svg>
-                <span class="font-VazirLight mt-2 mb-1.5">${isAdmin ? 'بررسی کامنت' : 'تعداد کامنت ها'}</span>
-                <span class="font-VazirBold">${isAdmin ? `${user.admin_stats[0].comments_count}` : `${user.comments_count}`}</span>
+                <span class="font-VazirLight mt-2 mb-1.5">${
+                  isAdmin ? "بررسی کامنت" : "تعداد کامنت ها"
+                }</span>
+                <span class="font-VazirBold">${
+                  isAdmin
+                    ? `${user.admin_stats[0].comments_count}`
+                    : `${user.comments_count}`
+                }</span>
               </div>
             </div>`;
 
@@ -1522,11 +1668,11 @@ const adminPanelUserStatsTemplate = (user) => {
 };
 
 const adminPanelUserCoursesTemplate = (user) => {
-  if (user.role === 'admin' || user.role === 'manager') {
-    return '';
+  if (user.role === "admin" || user.role === "manager") {
+    return "";
   }
 
-  let coursesTemplate = '';
+  let coursesTemplate = "";
 
   if (!user.courses.length) {
     coursesTemplate = `<p class="sm:text-lg text-center font-VazirMedium text-rose-600 p-5 bg-white dark:bg-slate-800 shadow dark:shadow-none dark:border dark:border-slate-800 rounded-2xl">کاربر در هیچ دوره ای شرکت نکرده است.</p>`;
@@ -1536,18 +1682,30 @@ const adminPanelUserCoursesTemplate = (user) => {
             <!-- Course -->
             <div class="bg-white dark:bg-slate-800 rounded-2xl pb-5 relative">
               <!-- Course Type -->
-              <span class="absolute top-3 right-0 px-2 py-px text-sm ${course.is_free ? 'bg-emerald-600' : 'bg-rose-600'} text-white rounded-l-full">${course.is_free ? 'رایگان' : 'نقدی'}</span>
+              <span class="absolute top-3 right-0 px-2 py-px text-sm ${
+                course.is_free ? "bg-emerald-600" : "bg-rose-600"
+              } text-white rounded-l-full">${
+        course.is_free ? "رایگان" : "نقدی"
+      }</span>
               <!-- End of Course Type -->
               <!-- Course Banner -->
-              <a class="block h-40 rounded-2xl overflow-hidden border-b border-b-slate-200 dark:border-b-slate-700" href="./course.html?course=${course.slug}">
-                <img class="size-full object-cover" loading="lazy" src="${course.image_src}" alt="${course.name}" />
+              <a class="block h-40 rounded-2xl overflow-hidden border-b border-b-slate-200 dark:border-b-slate-700" href="./course.html?course=${
+                course.slug
+              }">
+                <img class="size-full object-cover" loading="lazy" src="${
+                  course.image_src
+                }" alt="${course.name}" />
               </a>
               <!-- End of Course Banner -->
               <!-- Course Name -->
-              <a class="block mt-4 px-4 font-VazirBold text-lg sm:h-14 hover:theme-text-color transition-all sm:line-clamp-2" href="./course.html?course=${course.slug}">${course.name}</a>
+              <a class="block mt-4 px-4 font-VazirBold text-lg sm:h-14 hover:theme-text-color transition-all sm:line-clamp-2" href="./course.html?course=${
+                course.slug
+              }">${course.name}</a>
               <!-- End of Course Name -->
               <!-- User Delete Course Btn -->
-              <div class="user__course-delete-btn btn mt-4 mx-4 gap-1 bg-rose-600/10 text-rose-600 md:hover:bg-red-600 md:hover:text-white md:cursor-pointer" data-course_id="${course.id}">
+              <div class="user__course-delete-btn btn mt-4 mx-4 gap-1 bg-rose-600/10 text-rose-600 md:hover:bg-red-600 md:hover:text-white md:cursor-pointer" data-course_id="${
+                course.id
+              }">
                 <svg class="size-4 sm:size-5">
                   <use href="#trash"></use>
                 </svg>
@@ -1577,30 +1735,30 @@ const adminPanelUserCoursesTemplate = (user) => {
 };
 
 export {
-  loginBtnTemplate,
-  courseCardTemplate,
-  blogCardTemplate,
-  courseInfoTemplate,
-  courseDataTemplate,
-  headlineTemplate,
-  courseHeadlineSessionTemplate,
-  commentTemplate,
-  commentReplyTemplate,
-  blogTemplate,
-  recentBlogTemplate,
-  authFormHeaderTemplate,
-  headerCartCourseTemplate,
-  cartCourseTemplate,
   accountCourseTemplate,
-  panelQuestionTemplate,
-  userAccountProfilePictureTemplate,
-  ticketTemplate,
-  viewedTicketTemplate,
   adminPanelCommentTemplate,
-  adminPanelViewedQuestionTemplate,
-  sessionQuestionTemplate,
-  adminPanelUserTemplate,
+  adminPanelUserCoursesTemplate,
   adminPanelUserInfoTemplate,
   adminPanelUserStatsTemplate,
-  adminPanelUserCoursesTemplate,
+  adminPanelUserTemplate,
+  adminPanelViewedQuestionTemplate,
+  authFormHeaderTemplate,
+  blogCardTemplate,
+  blogTemplate,
+  cartCourseTemplate,
+  commentReplyTemplate,
+  commentTemplate,
+  courseCardTemplate,
+  courseDataTemplate,
+  courseHeadlineSessionTemplate,
+  courseInfoTemplate,
+  headerCartCourseTemplate,
+  headlineTemplate,
+  loginBtnTemplate,
+  panelQuestionTemplate,
+  recentBlogTemplate,
+  sessionQuestionTemplate,
+  ticketTemplate,
+  userAccountProfilePictureTemplate,
+  viewedTicketTemplate,
 };
