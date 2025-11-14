@@ -1632,7 +1632,7 @@ const adminPanelUserStatsTemplate = (user) => {
                 }</span>
                 <span class="font-VazirBold">${
                   isAdmin
-                    ? `${user.admin_stats[0].tickets_count}`
+                    ? `${user.admin_stats.tickets_count}`
                     : `${user.tickets_count}`
                 }</span>
               </div>
@@ -1645,7 +1645,7 @@ const adminPanelUserStatsTemplate = (user) => {
                 }</span>
                 <span class="font-VazirBold">${
                   isAdmin
-                    ? `${user.admin_stats[0].questions_count}`
+                    ? `${user.admin_stats.questions_count}`
                     : `${user.questions_count}`
                 }</span>
               </div>
@@ -1658,7 +1658,7 @@ const adminPanelUserStatsTemplate = (user) => {
                 }</span>
                 <span class="font-VazirBold">${
                   isAdmin
-                    ? `${user.admin_stats[0].comments_count}`
+                    ? `${user.admin_stats.comments_count}`
                     : `${user.comments_count}`
                 }</span>
               </div>
